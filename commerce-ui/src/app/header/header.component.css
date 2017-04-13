@@ -1,0 +1,19 @@
+.img-responsive {
+    height: 100px;
+    align-self: stretch;
+    padding-bottom: 30px;
+}
+
+.header {
+    max-height: 50px;
+    background-color: lightgray;
+    padding-top: 10px;
+}
+
+.cart-icon {
+    padding-right: 0px;
+}
+
+.user-icon {
+    padding-left: 10px;
+}
