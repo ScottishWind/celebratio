@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
-  let component: AccountlistComponent;
-  let fixture: ComponentFixture<AccountlistComponent>;
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
