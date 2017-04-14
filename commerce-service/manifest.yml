@@ -1,0 +1,7 @@
+---
+applications:
+- name: commerce-service
+  memory: 512M
+  instances: 1
+  random-route: true
+  path: target/commerce-service-0.0.1-SNAPSHOT.jar
