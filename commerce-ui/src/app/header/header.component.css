@@ -6,14 +6,31 @@
 
 .header {
     max-height: 50px;
-    background-color: lightgray;
+    background-color: rgba(35, 35, 35, 0.72);
     padding-top: 10px;
+}
+.icon {
+  color: lightblue;
 }
 
 .cart-icon {
+    padding-left: 20px;
     padding-right: 0px;
 }
 
 .user-icon {
     padding-left: 10px;
+}
+
+.right-dropdown {
+  display: inline;
+  float: left;
+  padding-left: 0px;
+  paddig-top: 5px;
+  position: absolute;
+}
+
+.btn {
+  padding-top: 0px;
+  background-color: transparent;
 }
