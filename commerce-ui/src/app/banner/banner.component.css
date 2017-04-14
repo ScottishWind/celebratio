@@ -22,3 +22,8 @@
   width: 100%;
   /*image width*/
 }
+
+.banner {
+  max-height: 50px;
+  padding-top: 10px;
+}

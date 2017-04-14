@@ -6,13 +6,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {HeaderComponent} from './header/header.component';
 import {BannerComponent} from './banner/banner.component';
+import {ProductsComponent} from './products/products.component';
 import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BannerComponent
+    BannerComponent,
+    ProductsComponent
   ],
   imports: [
     NgbModule.forRoot(),
