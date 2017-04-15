@@ -1,7 +1,12 @@
-package com.commerce.online.config;
+package com.xcommerce.online.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+
+import com.mongodb.MongoClient;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,5 +21,16 @@ public class CommerceServiceConfiguration {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any()).build();
+	}
+
+	@Bean
+	MongoDbFactory mongoDbFactory() throws Exception {
+		return new SimpleMongoDbFactory(new MongoClient(), "xcommerce");
+	}
+
+	@Bean
+	MongoTemplate mongoTemplate() throws Exception {
+		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
+		return mongoTemplate;
 	}
 }
