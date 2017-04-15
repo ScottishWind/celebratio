@@ -1,32 +1,40 @@
 <nav class="jumbotron navbar header">
-    <div class="navbar-header">
-        <div class="row">
-            <div class="col-lg-5 col-sm-5">
-                <h2><a href="#"><img src="../icon.png" class="header-logo img-responsive"/></a></h2>
-            </div>
-            <div class="col-lg-4 col-sm-4">
-                <div class="panel-default">
-                    <div class="input-group">
-                        <input type="text" class="search-query form-control" placeholder="Search"/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-info" type="button">
-                                 <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-1 col-sm-1 cart-icon">
-                <a href="#"><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i><span class="badge">4</span></a>
-            </div>
-            <div class="col-lg-1 col-sm-1">
-                <a href="#"><i class="fa fa-bell fa-2x" aria-hidden="true"></i><span class="badge">3</span></a>
-            </div>
-            <div class="col-lg-1 col-sm-1 user-icon">
-                <a href="#"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
-            </div>
+  <div class="navbar-header">
+    <div class="row">
+      <div class="col-lg-5 col-sm-5">
+        <h2><a href="#"><img src="../icon.png" class="header-logo img-responsive"/></a></h2>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <div class="panel-default">
+          <div class="input-group">
+            <input type="text" class="search-query form-control" placeholder="Search"/>
+            <span class="input-group-btn">
+                  <button class="btn btn-info" type="button">
+                       <a href="#"><i class="fa fa-search icon" aria-hidden="true"></i></a>
+                  </button>
+                </span>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-1 col-sm-1 cart-icon">
+        <a href="#"><i class="fa fa-cart-plus fa-2x icon" aria-hidden="true"></i><span class="badge">4</span></a>
+      </div>
+      <div class="col-lg-1 col-sm-1">
+        <a href="#"><i class="fa fa-bell fa-2x icon" aria-hidden="true"></i><span class="badge">3</span></a>
+      </div>
+      <div class="col-lg-1 col-sm-1">
+        <div ngbDropdown class="right-dropdown">
+          <button class="btn btn-default" id="mode" ngbDropdownToggle>
+            <i class="fa fa-user-circle fa-2x icon" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="mode-menu">
+            <button class="dropdown-item">Order history</button>
+            <button class="dropdown-item">Log out</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </nav>
 
 
