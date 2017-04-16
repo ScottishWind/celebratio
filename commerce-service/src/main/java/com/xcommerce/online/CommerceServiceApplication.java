@@ -1,4 +1,4 @@
-package com.commerce.online;
+package com.xcommerce.online;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
