@@ -1,81 +1,17 @@
 <div class="container-fluid productlist">
-  <h3><a href="#">Recommended for you </a></h3>
-  <ngb-carousel data-interval="false">
-    <template ngbSlide style="background-color: transparent">
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=1" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
+  <div class="container-fluid" *ngFor="let products of productsByCategoryMap | mapToIterable">
+    <h2><b>{{products.key}}</b></h2>
+    <ngb-carousel data-interval="false">
+      <template ngbSlide *ngFor="let productList of products.value | splitArray : 4">
+        <div href="#" class="thubmnail" *ngFor="let product of productList">
+          <img class="image-align borderimg" src="{{product.image}}" alt="Random first slide">
+          <div class="caption">
+            <p></p>
+            <h3><a href="#">{{product.name}}</a></h3>
+            <p>Rs: {{product.actualPrice}}</p>
+          </div>
         </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=2" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=3" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=4" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=5" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=6" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-    </template>
-    <template ngbSlide style="background-color: transparent">
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=7" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=8" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=9" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=10" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=11" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-      <a href="#" class="thubmnail">
-        <img class="image-align" src="http://lorempixel.com/150/200?r=12" alt="Random first slide">
-        <div class="caption">
-          <p>Some sample text. Some sample text.</p>
-        </div>
-      </a>
-    </template>
-  </ngb-carousel>
-</div>
+      </template>
+    </ngb-carousel>
+  </div>
+</div>s

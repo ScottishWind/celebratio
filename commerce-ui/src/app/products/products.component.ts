@@ -7,11 +7,11 @@ import {ProductService} from '../services/productService';
   selector: 'app-productscomponent',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers: [ProductService]
+  providers: [ProductService],
 })
 export class ProductsComponent implements OnInit {
 
-  productsByCategory: Map<String,Product[]> = new Map<String,Product[]>();
+  productsByCategoryMap: Map<String,Product[]>;
 
   constructor(private productService: ProductService) {
 
@@ -23,16 +23,18 @@ export class ProductsComponent implements OnInit {
 
   groupByProducts(): void {
     this.productService.getProducts().then(products => {
+      this.productsByCategoryMap = new Map<String,Product[]>();
       products.forEach(product => {
-          if (this.productsByCategory.get(product.category) === undefined) {
-            this.productsByCategory.set(product.category, new Array<Product>());
+          if (this.productsByCategoryMap.get(product.category) === undefined) {
+            this.productsByCategoryMap.set(product.category, new Array<Product>());
           }
-          this.productsByCategory.get(product.category).push(this.createProduct(product))
+          this.productsByCategoryMap.get(product.category).push(this.createProduct(product))
         }
       )
     });
-    console.log(this.productsByCategory);
+
   }
+
 
   createProduct(data): Product {
     return new Product(data.category
