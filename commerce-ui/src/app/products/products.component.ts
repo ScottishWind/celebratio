@@ -46,8 +46,10 @@ export class ProductsComponent implements OnInit {
       , data.label
       , data.name
       , data.title
+      , data.stars
       , data.description
     )
   }
+
 
 }

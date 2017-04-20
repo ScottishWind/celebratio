@@ -9,9 +9,14 @@
             <p></p>
             <p><a href="#">{{product.name}}</a></p>
             <p><strong>Rs: {{product.actualPrice}}</strong></p>
+            <div class="star-rating">
+              <span *ngFor="let i of [1,2,3,4,5]"
+                    [ngClass]="{'fa' : true,'fa-star-o' : i > product.stars, 'fa-star' : i <= product.stars}"
+                    [attr.data-rating]="i"></span>
+            </div>
           </div>
         </div>
       </template>
     </ngb-carousel>
   </div>
-</div>s
+</div>

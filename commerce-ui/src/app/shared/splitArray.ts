@@ -11,7 +11,6 @@ export class SplitArray {
       while (array.length) {
         results.push(array.splice(0, size));
       }
-      console.log(results);
       return results;
     }
   }

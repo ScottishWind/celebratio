@@ -73,3 +73,10 @@ p {
   word-wrap: break-word;
   width: 200px;
 }
+
+.star-rating {
+  line-height: 32px;
+  font-size: 1.25em;
+  cursor: pointer;
+  display: inline-block;
+}
