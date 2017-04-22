@@ -2,6 +2,10 @@
   padding-top: 300px;
 }
 
+.product-container-style {
+  padding-top: 30px;
+}
+
 .image-align {
   padding: 5%;
 }
@@ -75,8 +79,15 @@ p {
 }
 
 .star-rating {
-  line-height: 32px;
+  line-height: 40px;
   font-size: 1.25em;
   cursor: pointer;
   display: inline-block;
+}
+
+label {
+  text-align: left;
+  clear: both;
+  float: left;
+  margin-right: 15px;
 }

@@ -1,18 +1,23 @@
 <div class="container-fluid productlist">
-  <div class="container-fluid" *ngFor="let products of productsByCategoryMap | mapToIterable">
+  <div class="container-fluid product-container-style" *ngFor="let products of productsByCategoryMap | mapToIterable">
     <h2><b>{{products.key}}</b></h2>
     <ngb-carousel data-interval="false">
       <template ngbSlide *ngFor="let productList of products.value | splitArray : 5">
         <div href="#" class="thubmnail" *ngFor="let product of productList">
-          <img class="image-align" src="{{product.image}}" alt="Random first slide">
+          <img class="image-align" src="{{product.image}}" height="250">
           <div class="caption">
             <p></p>
-            <p><a href="#">{{product.name}}</a></p>
-            <p><strong>Rs: {{product.actualPrice}}</strong></p>
+            <label><a href="#">{{product.name}}</a></label>
+            <br clear="all"/>
             <div class="star-rating">
               <span *ngFor="let i of [1,2,3,4,5]"
                     [ngClass]="{'fa' : true,'fa-star-o' : i > product.stars, 'fa-star' : i <= product.stars}"
                     [attr.data-rating]="i"></span>
+            </div>
+            <div style="{z-index: 9; position: relative)">
+              <label><strong>Rs: {{product.actualPrice}}</strong></label>
+              <button class="btn btn-secondary  btn-sm"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
         </div>
