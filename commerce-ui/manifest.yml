@@ -1,0 +1,10 @@
+---
+applications:
+- name: commerce-ui
+  memory: 512M
+  instances: 1
+  random-route: true
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+
+
+

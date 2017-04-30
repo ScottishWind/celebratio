@@ -1,6 +1,6 @@
 <div class="container-fluid productlist">
   <div class="container-fluid product-container-style" *ngFor="let products of productsByCategoryMap | mapToIterable">
-    <h2><b>{{products.key}}</b></h2>
+    <h2 class="product-heading"><b>{{products.key}}</b></h2>
     <ngb-carousel data-interval="false">
       <template ngbSlide *ngFor="let productList of products.value | splitArray : 5">
         <div href="#" class="thubmnail" *ngFor="let product of productList">

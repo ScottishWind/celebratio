@@ -91,3 +91,8 @@ label {
   float: left;
   margin-right: 15px;
 }
+
+.product-heading {
+  font-family: "Al Nile";
+  color: chocolate;
+}
