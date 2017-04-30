@@ -5,13 +5,9 @@ package com.xcommerce.online.product.service;
 
 import java.util.List;
 
-import com.xcommerce.online.product.model.ProductBean;
+import com.xcommerce.online.product.model.Product;
 
-/**
- * @author gabbu
- *
- */
-public interface ProductService {
+public interface ProductService<T extends Product> {
 
 	/**
 	 * create new product
@@ -19,7 +15,15 @@ public interface ProductService {
 	 * @param product
 	 * @return
 	 */
-	public ProductBean createNewProduct(ProductBean product);
+	public T createProduct(T product);
+
+	/**
+	 * create new product
+	 * 
+	 * @param product
+	 * @return
+	 */
+	public void createProduct(List<T> product);
 
 	/**
 	 * product search by category
@@ -27,13 +31,38 @@ public interface ProductService {
 	 * @param category
 	 * @return
 	 */
-	public List<ProductBean> searchProductByCategory(String category);
-	
+	public List<T> searchByCategory(String category);
+
 	/**
 	 * product search by label
 	 * 
 	 * @param category
 	 * @return
 	 */
-	public List<ProductBean> searchProductByLabel(String label);
+	public List<T> searchByLabel(String label);
+
+	/**
+	 * retrieve all products in db
+	 * @return
+	 */
+	public List<T> retrieveAllProducts();
+	
+	/**
+	 * delete by product id
+	 * @param productid
+	 */
+	public void deleteById(String productid);
+	
+	/**
+	 * delete by category name
+	 * @param category
+	 */
+	public void deleteByCategory(String category);
+	
+	/**
+	 * delete all products
+	 * @param category
+	 */
+	public void deleteAll();
+
 }

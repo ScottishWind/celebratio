@@ -3,22 +3,19 @@ package com.xcommerce.online.product.model;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "product")
-public class ProductBean {
+public class ProductBean extends Product {
 
-	@Id
-	private String productID;
+	private String name;
 	private String title;
-	private Double price;
-	private String imageIdentifier;
+	private String price;
+	private String image;
 	private String description;
 	private List<String> category;
 	private Map<String, String> attributes;
 	private List<String> label;
-
 
 	/**
 	 * @return the title
@@ -38,7 +35,7 @@ public class ProductBean {
 	/**
 	 * @return the price
 	 */
-	public Double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
@@ -46,24 +43,10 @@ public class ProductBean {
 	 * @param price
 	 *            the price to set
 	 */
-	public void setPrice(Double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	/**
-	 * @return the imageIdentifier
-	 */
-	public String getImageIdentifier() {
-		return imageIdentifier;
-	}
-
-	/**
-	 * @param imageIdentifier
-	 *            the imageIdentifier to set
-	 */
-	public void setImageIdentifier(String imageIdentifier) {
-		this.imageIdentifier = imageIdentifier;
-	}
 
 	/**
 	 * @return the description
@@ -132,23 +115,36 @@ public class ProductBean {
 	 */
 	@Override
 	public String toString() {
-		return "ProductBean [productID=" + productID + ", title=" + title + ", price=" + price + ", imageIdentifier="
-				+ imageIdentifier + ", description=" + description + ", category=" + category + ", attributes="
+		return "ProductBean [productID=" + productID + ", title=" + title + ", price=" + price + ", description=" + description + ", category=" + category + ", attributes="
 				+ attributes + ", label=" + label + "]";
 	}
 
 	/**
-	 * @return the productID
+	 * @return the name
 	 */
-	public String getProductID() {
-		return productID;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param productID the productID to set
+	 * @param name the name to set
 	 */
-	public void setProductID(String productID) {
-		this.productID = productID;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

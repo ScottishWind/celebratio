@@ -23,7 +23,7 @@ public class CommerceServiceConfiguration {
 				.paths(PathSelectors.any()).build();
 	}
 
-	@Bean
+	/**@Bean
 	MongoDbFactory mongoDbFactory() throws Exception {
 		return new SimpleMongoDbFactory(new MongoClient(), "xcommerce");
 	}
@@ -32,5 +32,5 @@ public class CommerceServiceConfiguration {
 	MongoTemplate mongoTemplate() throws Exception {
 		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
 		return mongoTemplate;
-	}
+	}**/
 }

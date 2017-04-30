@@ -6,13 +6,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xcommerce.online.product.facade.ProductFacade;
-import com.xcommerce.online.product.model.ProductBean;
+import com.xcommerce.online.product.model.NewProductBean;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -25,30 +28,62 @@ public class ProductResource {
 	@Autowired
 	private ProductFacade productFacade;
 
-	@ApiOperation(value = "Insert New Product Details", nickname = "Product Insert")
-	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	ProductBean createProduct(@RequestBody ProductBean product) {
+	@ApiOperation(value = "Inserts new Products - Accepts list of products", nickname = "New Product Insert")
+	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> createNewProduct(@RequestBody List<NewProductBean> product) {
 		logger.info(String.format("New Product add request submitted %S", product));
-		ProductBean newProduct = productFacade.createProduct(product);
-		return newProduct;
+		productFacade.createNewProduct(product);
+		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Search Product By Category", nickname = "Category Search")
+	@ApiOperation(value = "Returns all Products that matches the Product Category", nickname = "Category Search")
 	@RequestMapping(value = "/search/category", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	List<ProductBean> getProductDetailsBycategory(@RequestBody @NotEmpty String category) {
+	List<NewProductBean> getProductDetailsBycategory(@RequestBody @NotEmpty String category) {
 		logger.info(String.format("Request to fetch Product details for category %S", category));
-		List<ProductBean> productLst = productFacade.getProductDetailsByCategory(category);
+		List<NewProductBean> productLst = productFacade.getProductDetailsByCategory(category);
 		return productLst;
 
 	}
-	
-	@ApiOperation(value = "Search Product By Label", nickname = "Label Search")
+
+	@ApiOperation(value = "Returns all Products that matches the Label", nickname = "Label Search")
 	@RequestMapping(value = "/search/label", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	List<ProductBean> getProductDetailsbyLabel(@RequestBody @NotEmpty String label) {
+	List<NewProductBean> getProductDetailsbyLabel(@RequestBody @NotEmpty String label) {
 		logger.info(String.format("Request to fetch Product details for label %S", label));
-		List<ProductBean> productLst = productFacade.getProductDetailsByLabel(label);
+		List<NewProductBean> productLst = productFacade.getProductDetailsByLabel(label);
 		return productLst;
 
+	}
+
+	@ApiOperation(value = "HomeScreen Products - **Currently returns all products**", nickname = "Category Search")
+	@RequestMapping(value = "/homescreen", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	List<NewProductBean> getAllProductHome() {
+		logger.info(String.format("Request to fetch Product details for homescreen"));
+		List<NewProductBean> productLst = productFacade.getHomeScreenProducts();
+		return productLst;
+
+	}
+
+	@ApiOperation(value = "Deletes a single Product that matches the input Product ID", nickname = "Delete Product")
+	@RequestMapping(value = "/delete/id", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> deleteByProductId(@RequestBody @NotEmpty String productId) {
+		logger.info(String.format("Request to delete Product by product ID %S", productId));
+		productFacade.deleteByProductId(productId);
+		return (new ResponseEntity<>("success", HttpStatus.OK));
+	}
+
+	@ApiOperation(value = "Deletes All Products that belong to the input Category", nickname = "Delete Product")
+	@RequestMapping(value = "/delete/category", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> deleteByCategory(@RequestBody @NotEmpty String category) {
+		logger.info(String.format("Request to delete Product by category %S", category));
+		productFacade.deleteByCategory(category);
+		return (new ResponseEntity<>("success", HttpStatus.OK));
+	}
+
+	@ApiOperation(value = "Deletes entire Product list from Backend - **Risky Operation**", nickname = "Delete All Products")
+	@RequestMapping(value = "/delete/all", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> deleteAll() {
+		logger.info("Request to delete All Products from backend Database");
+		productFacade.deleteAll();
+		return (new ResponseEntity<>("success", HttpStatus.OK));
 	}
 }
-

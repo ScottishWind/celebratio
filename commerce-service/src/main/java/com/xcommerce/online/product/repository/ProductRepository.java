@@ -9,10 +9,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.xcommerce.online.product.model.ProductBean;
 
-/**
- * @author gabbu
- *
- */
 public interface ProductRepository extends MongoRepository<ProductBean, String> {
 	/**
 	 * find Products by Category

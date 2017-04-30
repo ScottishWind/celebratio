@@ -6,9 +6,8 @@ package com.xcommerce.online.product.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.xcommerce.online.product.model.ProductBean;
 import com.xcommerce.online.product.repository.ProductRepository;
@@ -17,8 +16,8 @@ import com.xcommerce.online.product.repository.ProductRepository;
  * @author gabbu
  *
  */
-@Repository
-public class ProductDaoImpl implements ProductDao {
+@Component("productDao")
+public class ProductDaoImpl implements ProductDao<ProductBean> {
 
 	@Autowired
 	private ProductRepository repository;
@@ -64,5 +63,36 @@ public class ProductDaoImpl implements ProductDao {
 		// TODO Auto-generated method stub
 		return repository.findByCategory(category);
 	}
+
+	@Override
+	public void insertProduct(List<ProductBean> product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<ProductBean> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteByProductId(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteByCategory(String category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
