@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   groupByProducts(): void {
     this.productService.getProducts().then(products => {
       this.productsByCategoryMap = new Map<String,Product[]>();
+      console.log(products);
       products.forEach(product => {
           if (this.productsByCategoryMap.get(product.category) === undefined) {
             this.productsByCategoryMap.set(product.category, new Array<Product>());

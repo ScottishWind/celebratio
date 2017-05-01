@@ -1,9 +1,12 @@
 import {Injectable}              from '@angular/core';
-import {Http, Response}          from '@angular/http';
+import {Http, Response, RequestOptions, Headers}          from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import {Constants} from '../shared/constants';
+import {Product} from '../products/model/product';
+import {ProductData} from '../products/mock/productData';
 
 @Injectable()
 export class ProductService {
@@ -11,10 +14,12 @@ export class ProductService {
   }
 
   getProducts(): Promise<any> {
-    return this.http.get('../assets/jsons/products.json')
+    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'}); // ... Set content type to JSON
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(Constants._serviceUrl + 'product/homescreen', JSON.stringify(null), options)
       .toPromise()
       .then(res => res.json())
-      .catch(this.handleError);
+      .catch((e => Promise.resolve(ProductData.PRODUCTS)));
   }
 
 
