@@ -14,9 +14,12 @@ export class ProductService {
   }
 
   getProducts(): Promise<any> {
-    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*'}); // ... Set content type to JSON
+    let headers = new Headers();
+    headers.append("Content-type",'application/json');
+    headers.append("accept",'application/json');
     let options = new RequestOptions({headers: headers});
-    return this.http.post(Constants._serviceUrl + 'product/homescreen', JSON.stringify(null), options)
+    console.log(options);
+    return this.http.post(Constants._serviceUrl + 'product/homescreen', JSON.stringify(''), options)
       .toPromise()
       .then(res => res.json())
       .catch((e => Promise.resolve(ProductData.PRODUCTS)));
