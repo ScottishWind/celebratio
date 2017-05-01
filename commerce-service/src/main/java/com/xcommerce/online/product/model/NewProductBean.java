@@ -4,6 +4,7 @@
 package com.xcommerce.online.product.model;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,6 +24,7 @@ public class NewProductBean extends Product {
 	private String description;
 	private String availableQuantity;
 	private List<String> label;
+	private String stars;
 
 	/**
 	 * @return the category
@@ -231,6 +233,22 @@ public class NewProductBean extends Product {
 				+ ", discount=" + discount + ", discountLabel=" + discountLabel + ", priceLabel=" + priceLabel
 				+ ", name=" + name + ", title=" + title + ", description=" + description + ", availableQuantity="
 				+ availableQuantity + ", label=" + label + "]";
+	}
+
+	/**
+	 * @return the stars
+	 */
+	public String getStars() {
+		Random rand = new Random();
+		int  n = rand.nextInt(5) + 1;
+		return String.valueOf(n);
+	}
+
+	/**
+	 * @param stars the stars to set
+	 */
+	public void setStars(String stars) {
+		this.stars = stars;
 	}
 
 }
