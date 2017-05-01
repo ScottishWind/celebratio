@@ -26,29 +26,33 @@ export class ProductsComponent implements OnInit {
       this.productsByCategoryMap = new Map<String,Product[]>();
       console.log(products);
       products.forEach(product => {
-          if (this.productsByCategoryMap.get(product.category) === undefined) {
-            this.productsByCategoryMap.set(product.category, new Array<Product>());
+        product.category.forEach(cat => {
+          if (this.productsByCategoryMap.get(cat) === undefined) {
+            this.productsByCategoryMap.set(cat, new Array<Product>());
           }
-          this.productsByCategoryMap.get(product.category).push(this.createProduct(product))
-        }
-      )
+          this.productsByCategoryMap.get(cat).push(this.createProduct(product));
+        });
+      });
     });
-
   }
 
 
   createProduct(data): Product {
-    return new Product(data.category
+    return new Product(data.productID
+      , data.category
       , data.subCategory
-      , data.image
+      , data.images
+      , data.price
+      , data.priceAfterDiscount
       , data.discount
-      , data.actualPrice
-      , data.discountedPrice
-      , data.label
+      , data.discountLabel
+      , data.priceLabel
       , data.name
       , data.title
-      , data.stars
       , data.description
+      , data.availableQuantity
+      , data.stars
+      , data.label
     )
   }
 

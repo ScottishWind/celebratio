@@ -1,28 +1,36 @@
 export class Product {
-  category: String;
+  productID: String;
+  category: Array<String>;
   subCategory: String;
-  image: String;
+  images: Array<String>;
+  price: Number;
+  priceAfterDiscount: Number;
   discount: Number;
-  actualPrice: Number;
-  discountedPrice: Number;
-  label: String;
+  discountLabel: String;
+  priceLabel: String;
   name: String;
   title: String;
-  stars: Number;
   description: String;
+  availableQuantity: Number;
+  stars: Number;
+  label: Array<String>;
 
 
-  constructor(category: String, subCategory: String, image: String, discount: Number, actualPrice: Number, discountedPrice: Number, label: String, name: String, title: String, stars: Number, description: String) {
+  constructor(productID: String, category: Array<String>, subCategory: String, images: Array<String>, price: Number, priceAfterDiscount: Number, discount: Number, discountLabel: String, priceLabel: String, name: String, title: String, description: String, availableQuantity: Number, stars: Number, label: Array<String>) {
+    this.productID = productID;
     this.category = category;
     this.subCategory = subCategory;
-    this.image = image;
+    this.images = images;
+    this.price = price;
+    this.priceAfterDiscount = priceAfterDiscount;
     this.discount = discount;
-    this.actualPrice = actualPrice;
-    this.discountedPrice = discountedPrice;
-    this.label = label;
+    this.discountLabel = discountLabel;
+    this.priceLabel = priceLabel;
     this.name = name;
     this.title = title;
-    this.stars = stars;
     this.description = description;
+    this.availableQuantity = availableQuantity;
+    this.stars = stars;
+    this.label = label;
   }
 }

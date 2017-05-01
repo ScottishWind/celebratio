@@ -14,7 +14,7 @@ export class ProductService {
   }
 
   getProducts(): Promise<any> {
-    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'}); // ... Set content type to JSON
+    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*'}); // ... Set content type to JSON
     let options = new RequestOptions({headers: headers});
     return this.http.post(Constants._serviceUrl + 'product/homescreen', JSON.stringify(null), options)
       .toPromise()
