@@ -12,5 +12,5 @@ if (environment.production) {
 setTimeout(() => {
     platformBrowserDynamic().bootstrapModule(AppModule);
   },
-  5000);
+  0);
 

@@ -10,6 +10,7 @@ import {HeaderComponent} from './header/header.component';
 import {BannerComponent} from './banner/banner.component';
 import {ProductsComponent} from './products/products.component';
 import {AppComponent} from './app.component';
+import {ProductDetailsComponent} from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {AppComponent} from './app.component';
     AppComponent,
     HeaderComponent,
     BannerComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -26,6 +28,7 @@ import {AppComponent} from './app.component';
     FormsModule,
     HttpModule
   ],
+  entryComponents: [ProductDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

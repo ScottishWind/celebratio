@@ -1,6 +1,8 @@
-import {Component, OnInit, NgModule} from '@angular/core';
+import {Component, OnInit, NgModule, ViewChild} from '@angular/core';
 import {Product} from './model/product';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../services/productService';
+import {ProductDetailsComponent} from '../product-details/product-details.component';
 
 
 @Component({
@@ -13,12 +15,18 @@ export class ProductsComponent implements OnInit {
 
   productsByCategoryMap: Map<String,Product[]>;
 
-  constructor(private productService: ProductService) {
+
+  constructor(private productService: ProductService, private modalService: NgbModal) {
 
   }
 
   ngOnInit() {
     this.groupByProducts();
+  }
+
+  openProductDetails(product:Product) {
+    const productComponent = this.modalService.open(ProductDetailsComponent);
+    productComponent.componentInstance.product = product
   }
 
   groupByProducts(): void {

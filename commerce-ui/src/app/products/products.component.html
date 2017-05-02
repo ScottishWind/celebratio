@@ -1,13 +1,15 @@
 <div class="container-fluid productlist">
   <div class="container-fluid product-container-style" *ngFor="let products of productsByCategoryMap | mapToIterable">
     <h2 class="product-heading"><b>{{products.key}}</b></h2>
-    <ngb-carousel data-interval="false">
+    <ngb-carousel class="row" data-interval="false">
       <ng-template ngbSlide *ngFor="let productList of products.value | splitArray : 5">
-        <div href="#" class="thubmnail" *ngFor="let product of productList">
-          <img class="image-align" src="{{product.images[0]}}" height="250">
-          <div class="caption">
+        <div class="overlay-left"></div>
+        <div class="thubmnail" *ngFor=" let product of productList">
+          <img (click)="openProductDetails(product)" class="image-align" src="{{product.images[0]}}"
+               height="250">
+          <div class="carousal-caption" style="padding-left: 35px">
             <p></p>
-            <label><a href="#">{{product.name}}</a></label>
+            <label><a (click)="openProductDetails(product)">{{product.name}}</a></label>
             <br clear="all"/>
             <div class="star-rating">
               <span *ngFor="let i of [1,2,3,4,5]"
@@ -21,7 +23,9 @@
             </div>
           </div>
         </div>
+        <div class="overlay-right"></div>
       </ng-template>
     </ngb-carousel>
   </div>
 </div>
+
