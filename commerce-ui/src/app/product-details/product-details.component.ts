@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Product} from '../products/model/product';
 
@@ -10,9 +10,11 @@ import {Product} from '../products/model/product';
 
 export class ProductDetailsComponent {
   @Input() product;
+  @ViewChild('mainImage') mainImage;
 
   constructor(public activeModal: NgbActiveModal) {
   }
+
 }
 
 

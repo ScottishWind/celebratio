@@ -7,7 +7,8 @@ export class ProductData {
       ],
       "subCategory": "Crystal Collections",
       "images": [
-        "https://www.pujashoppe.com/media/catalog/product/cache/1/small_image/250x/b63abaf06ae95253aa13910d3f8ebe2c/d/s/dsc04326.jpg"
+        "https://www.pujashoppe.com/media/catalog/product/cache/1/small_image/250x/b63abaf06ae95253aa13910d3f8ebe2c/d/s/dsc04326.jpg",
+        "https://www.pujashoppe.com/media/catalog/product/cache/1/small_image/250x/b63abaf06ae95253aa13910d3f8ebe2c/0/t/0t2a4390.jpg"
       ],
       "price": "200",
       "priceAfterDiscount": "160",

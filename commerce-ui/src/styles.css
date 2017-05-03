@@ -3,6 +3,7 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/bootstrap-horizon/src/bootstrap-horizon.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+
 #pre-bootstrap {
   background-color: #262626;
   bottom: 0px;
