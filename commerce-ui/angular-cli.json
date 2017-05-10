@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "source.gif",
+        "welcome.gif",
         "icon.png"
       ],
       "index": "index.html",

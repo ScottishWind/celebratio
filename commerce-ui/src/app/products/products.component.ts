@@ -1,4 +1,4 @@
-import {Component, OnInit, NgModule, ViewChild} from '@angular/core';
+import {Component, OnInit, NgModule, ViewChild, Output, EventEmitter} from '@angular/core';
 import {Product} from './model/product';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../services/productService';
@@ -15,6 +15,8 @@ export class ProductsComponent implements OnInit {
 
   productsByCategoryMap: Map<String,Product[]>;
 
+  @Output() addCartEvent: EventEmitter<Product> = new EventEmitter<Product>();
+
 
   constructor(private productService: ProductService, private modalService: NgbModal) {
 
@@ -24,7 +26,7 @@ export class ProductsComponent implements OnInit {
     this.groupByProducts();
   }
 
-  openProductDetails(product:Product) {
+  openProductDetails(product: Product) {
     const productComponent = this.modalService.open(ProductDetailsComponent);
     productComponent.componentInstance.product = product
   }
@@ -62,6 +64,11 @@ export class ProductsComponent implements OnInit {
       , data.stars
       , data.label
     )
+  }
+
+  emitAddCartEvent(product: Product) {
+    console.log("Adding to cart", product.productID);
+    this.addCartEvent.emit(product);
   }
 
 
