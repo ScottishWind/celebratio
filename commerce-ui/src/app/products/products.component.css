@@ -29,7 +29,6 @@ img:hover {
   z-index: 5;
 }
 
-
 p {
   word-wrap: break-word;
   width: 200px;
@@ -125,4 +124,18 @@ label {
   border-left: 3px solid transparent;
   border-bottom: 3px solid transparent;
   border-top: 3px solid #79A70A;
+}
+
+.cart-button {
+  float: right;
+  padding-right: 20%;
+  background-color: transparent;
+  border: none;
+}
+
+.cart-button[disabled] {
+  color: darkgoldenrod;
+}
+.cart-button[disabled]:hover{
+  cursor: not-allowed;
 }

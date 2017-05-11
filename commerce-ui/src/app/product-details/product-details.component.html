@@ -34,12 +34,16 @@
   </div>
 </div>
 <div class="modal-footer">
+  <p>
+    <ngb-alert *ngIf="addedToCart" type="success" [dismissible]="false">
+      Product Added to the cart
+    </ngb-alert>
+  </p>
   <button type="button"
           [ngClass]="{'btn-warning' : alreadyExistsInCart(product)}"
-          [disabled]="alreadyExistsInCart(product)"
+          [disabled]="addedToCart"
           class="btn btn-secondary" (click)="addToCart(product)">Add to Cart
   </button>
-  <button type=" button
-  " class="btn btn-secondary" (click)="activeModal.close('Close click')">Close
+  <button type=" button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close
   </button>
 </div>

@@ -13,17 +13,18 @@ import {CartService} from '../services/cartService';
 export class ProductDetailsComponent {
   @Input() product;
   @ViewChild('mainImage') mainImage;
+  addedToCart : boolean;
 
   constructor(public activeModal: NgbActiveModal, private cartService: CartService) {
   }
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
-    this.activeModal.close('Close click');
   }
 
   alreadyExistsInCart(product: Product): boolean {
-    return this.cartService.checkExistsInCart(product);
+    this.addedToCart =  this.cartService.checkExistsInCart(product);
+    return this.addedToCart
   }
 
 
