@@ -1,6 +1,8 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, EventEmitter, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Product} from '../products/model/product';
+import {CartService} from '../services/cartService';
+
 
 @Component({
   selector: 'app-product-details',
@@ -12,8 +14,18 @@ export class ProductDetailsComponent {
   @Input() product;
   @ViewChild('mainImage') mainImage;
 
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal, private cartService: CartService) {
   }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    this.activeModal.close('Close click');
+  }
+
+  alreadyExistsInCart(product: Product): boolean {
+    return this.cartService.checkExistsInCart(product);
+  }
+
 
 }
 

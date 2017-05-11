@@ -2,6 +2,7 @@ import {Component, OnInit, NgModule, ViewChild, Output, EventEmitter} from '@ang
 import {Product} from './model/product';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../services/productService';
+import {CartService} from '../services/cartService';
 import {ProductDetailsComponent} from '../product-details/product-details.component';
 
 
@@ -15,10 +16,8 @@ export class ProductsComponent implements OnInit {
 
   productsByCategoryMap: Map<String,Product[]>;
 
-  @Output() addCartEvent: EventEmitter<Product> = new EventEmitter<Product>();
 
-
-  constructor(private productService: ProductService, private modalService: NgbModal) {
+  constructor(private productService: ProductService, private modalService: NgbModal, private cartService: CartService) {
 
   }
 
@@ -66,9 +65,12 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  emitAddCartEvent(product: Product) {
-    console.log("Adding to cart", product.productID);
-    this.addCartEvent.emit(product);
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
+
+  alreadyExistsInCart(product: Product): boolean {
+    return this.cartService.checkExistsInCart(product);
   }
 
 

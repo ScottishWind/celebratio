@@ -1,32 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Product} from '../products/model/product';
+import {Subscription} from 'rxjs/Subscription';
+import {CartService} from '../services/cartService';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
-  productList: Array<Product>;
+  productList: Product[] = new Array<Product>();
+  subscription: Subscription;
 
-  constructor() {
-    this.productList = new Array<Product>();
+  constructor(private cartService: CartService) {
+    this.cartService.getProductList().subscribe(productList => {
+      this.productList = productList;
+    });
   }
 
-  ngOnInit() {
-  }
-
-  addToCart(product: Product) {
-    this.productList.push(product)
-  }
 
   removeFromCart(product: Product) {
 
   }
 
-  size() {
-    return this.productList.length;
-  }
 
 }

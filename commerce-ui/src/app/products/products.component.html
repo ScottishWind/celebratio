@@ -6,7 +6,8 @@
         <div class="overlay-left"></div>
         <div class="thubmnail" *ngFor=" let product of productList">
           <div class="box">
-            <div *ngIf = "product.discount != 0 || product.discount != null" class="ribbon"><span>{{product.discount}} % off</span></div>
+            <div *ngIf="(product.discount > 0 && product.discount != null)" class="ribbon"><span>{{product.discount}} % off</span>
+            </div>
             <img (click)="openProductDetails(product)" class="image-align" src="{{product.images[0]}}"
                  height="250">
           </div>
@@ -16,12 +17,16 @@
             <br clear="all"/>
             <div class="star-rating">
               <span *ngFor="let i of [1,2,3,4,5]"
-                    [ngClass]="{'fa' : true,'fa-star-o' : i > product.stars, 'fa-star' : i <= product.stars}"
-                    [attr.data-rating]="i"></span>
+                    [ngClass]="{'fa' : true,'fa-star-o' : i > product.stars, 'fa-star' : i <= product.stars}"></span>
             </div>
-            <div style="{z-index: 9; position: relative)">
+            <div>
               <label><strong>Rs: {{product.price}}</strong></label>
-              <button class="btn btn-secondary  btn-sm" (click)="emitAddCartEvent(product)"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+              <button
+                [ngClass]="{'btn-warning' : alreadyExistsInCart(product)}"
+                [disabled]="alreadyExistsInCart(product)"
+                class="btn btn-secondary  btn-sm"
+                (click)="addToCart(product)"><i
+                class="fa fa-cart-plus" aria-hidden="true"></i>
               </button>
             </div>
           </div>

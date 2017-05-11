@@ -10,8 +10,6 @@ import {CartComponent} from '../cart/cart.component';
 })
 export class HeaderComponent implements OnInit {
 
-  @ViewChild('cart') cartComponent: CartComponent;
-
   constructor() {
 
   }
@@ -19,8 +17,5 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToCart(product: Product) {
-    this.cartComponent.addToCart(product)
-  }
 
 }
