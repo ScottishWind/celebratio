@@ -7,15 +7,19 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="row list">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <img class="img-fluid" src="{{product.images[0]}}"/>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <a>
             <small>{{product.name}}</small>
           </a>
         </div>
-        <div class="col-sm-3" style="padding-top: 10px; float: left">
+        <div class="col-sm-5">
+          <input type='button' value='-' class='qtyminus' field='quantity'/>
+          <input type='text' name='quantity' value='1' class='qty'/>
+          <input type='button' value='+' class='qtyplus' field='quantity'/>
+          <br>
           <small><b>Rs:{{product.price}}</b></small>
         </div>
       </div>

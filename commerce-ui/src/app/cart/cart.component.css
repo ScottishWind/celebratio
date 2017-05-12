@@ -21,6 +21,10 @@
 .dropdown-divider {
   pointer-events: none;
 }
+.dropdown-item:{
+  margin: 10px;
+  border-bottom-color: black;
+}
 
 .dropdown-divider-button {
   opacity: 1;
@@ -35,4 +39,26 @@
   -webkit-transition-duration: 0.3s; /* Safari */
   box-shadow: 10px 10px 5px #888888;
   z-index: 5;
+}
+
+.dropdown-item .close {
+  position: absolute;
+  left: 0;
+  top:auto;
+}
+
+.qty {
+  width: 40px;
+  height: 25px;
+  text-align: center;
+}
+
+input.qtyplus {
+  width: 25px;
+  height: 25px;
+}
+
+input.qtyminus {
+  width: 25px;
+  height: 25px;
 }
