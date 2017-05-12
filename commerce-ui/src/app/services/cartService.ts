@@ -33,12 +33,17 @@ export class CartService {
         exists = true;
       }
     });
-    console.log("Returnning ", exists);
     return exists;
   }
 
-  removeFromCart(product: Product) {
-
+  removeFromCart(checkProduct: Product) {
+    var itemIndex;
+    this.productList.forEach((product, index) => {
+      if (product.productID === checkProduct.productID) {
+        itemIndex = index;
+      }
+    });
+    this.productList.splice(itemIndex, 1);
   }
 
 

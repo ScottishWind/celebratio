@@ -21,8 +21,13 @@ export class CartComponent {
 
 
   removeFromCart(product: Product) {
-
+    this.cartService.removeFromCart(product);
   }
 
+  stopClosing($event) {
+    if (this.productList.length > 0) {
+      $event.stopPropagation();
+    }
+  }
 
 }

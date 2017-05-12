@@ -1,9 +1,29 @@
 <div ngbDropdown class="d-inline-block">
   <button class="btn btn-default" id="dropdownBasic1" ngbDropdownToggle><i
     class="fa fa-cart-plus fa-2x icon" aria-hidden="true"></i><span class="badge">{{productList.length}}</span></button>
-  <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-    <button class="dropdown-item">Action - 1</button>
-    <button class="dropdown-item">Another Action</button>
-    <button class="dropdown-item">Something else is here</button>
+  <div class="dropdown-menu" aria-labelledby="dropdownBasic1" (click)="stopClosing($event)">
+    <div class="dropdown-item" *ngFor="let product of productList">
+      <button type="button" class="close" aria-label="Close" (click)="removeFromCart(product)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="row list">
+        <div class="col-sm-4">
+          <img class="img-fluid" src="{{product.images[0]}}"/>
+        </div>
+        <div class="col-sm-5">
+          <a>
+            <small>{{product.name}}</small>
+          </a>
+        </div>
+        <div class="col-sm-3" style="padding-top: 10px; float: left">
+          <small><b>Rs:{{product.price}}</b></small>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item dropdown-divider-button">
+      <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+      <strong>Proceed to check-out</strong>
+    </div>
   </div>
 </div>

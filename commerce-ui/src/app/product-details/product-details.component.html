@@ -22,7 +22,7 @@
       <div *ngIf="product.discount == 0 || product.discount == null" style="padding-top: 80px">
         <h3><strong>Rs: {{product.price}}</strong></h3>
       </div>
-      <div *ngIf="product.discount != 0" style="padding-top: 50px">
+      <div *ngIf="(product.discount > 0 && product.discount != null)" style="padding-top: 50px">
         Price:<h2><s> Rs {{product.price}}</s></h2>
         Discounted Price<h3><strong style="color: green"> Rs: {{product.priceAfterDiscount}}</strong></h3>
       </div>
