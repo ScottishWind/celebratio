@@ -30,4 +30,12 @@ export class CartComponent {
     }
   }
 
+  addQty(value: string) {
+    return parseInt(value) + 1;
+  }
+
+  removeQty(value: string) {
+    return parseInt(value) - 1;
+  }
+
 }

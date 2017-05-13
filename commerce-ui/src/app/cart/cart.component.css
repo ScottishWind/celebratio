@@ -21,9 +21,13 @@
 .dropdown-divider {
   pointer-events: none;
 }
-.dropdown-item:{
+.dropdown-item {
   margin: 10px;
   border-bottom-color: black;
+}
+
+.dropdown-item:active{
+  background-color: transparent;
 }
 
 .dropdown-divider-button {
