@@ -55,7 +55,7 @@ label {
 
 .overlay-left {
   position: relative;
-  padding-left: 50px;
+  padding-left: 100px;
   z-index: 10;
 }
 
@@ -136,10 +136,31 @@ label {
 .cart-button[disabled] {
   color: darkgoldenrod;
 }
-.cart-button[disabled]:hover{
+
+.cart-button[disabled]:hover {
   cursor: not-allowed;
 }
 
 .right-dropdown-menu {
   right: 100%;
 }
+
+/deep/
+.carousel-indicators li {
+  display: none;
+}
+
+/deep/
+.carousel-indicators .active {
+  display: none;
+}
+
+/deep/
+ngb-carousel .carousel-control {
+  position: absolute;
+  top: 50%; /* pushes the icon in the middle of the height */
+  z-index: 0;
+  display: inline-block;
+}
+
+
