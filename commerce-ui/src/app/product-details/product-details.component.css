@@ -37,6 +37,7 @@
   width: 25%;
   padding-bottom: 25%;
   position: relative;
+  align-items: stretch;
 }
 
 .innerContent {

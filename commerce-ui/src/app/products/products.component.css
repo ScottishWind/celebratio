@@ -139,3 +139,7 @@ label {
 .cart-button[disabled]:hover{
   cursor: not-allowed;
 }
+
+.right-dropdown-menu {
+  right: 100%;
+}
