@@ -17,10 +17,10 @@
         </div>
         <div class="col-sm-5">
           <input type='button' value='-' class='qtyminus' (click)="qty.value = removeQty(qty.value)"/>
-          <input value='1' class='qty' #qty/>
+          <input type='text' value='1' class='qty' #qty/>
           <input type='button' value='+' class='qtyplus' (click)="qty.value = addQty(qty.value)"/>
           <br>
-          <small><b>Rs:{{product.price * (qty.value | number)}}</b></small>
+          <small><b>Rs:{{product.price * qty.value}}</b></small>
         </div>
       </div>
     </div>
