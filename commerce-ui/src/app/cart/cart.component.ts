@@ -34,7 +34,10 @@ export class CartComponent {
     return parseInt(value) + 1;
   }
 
-  removeQty(value: string) {
+  removeQty(value: string, product: Product) {
+    if (value == '1') {
+      this.removeFromCart(product);
+    }
     return parseInt(value) - 1;
   }
 

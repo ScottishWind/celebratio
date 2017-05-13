@@ -16,7 +16,7 @@
           </a>
         </div>
         <div class="col-sm-5">
-          <input type='button' value='-' class='qtyminus' (click)="qty.value = removeQty(qty.value)"/>
+          <input type='button' value='-' class='qtyminus' (click)="qty.value = removeQty(qty.value,product)"/>
           <input type='text' value='1' class='qty' #qty/>
           <input type='button' value='+' class='qtyplus' (click)="qty.value = addQty(qty.value)"/>
           <br>
