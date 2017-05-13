@@ -25,7 +25,8 @@ export class ProductsComponent implements OnInit {
     this.groupByProducts();
   }
 
-  openProductDetails(product: Product) {
+  openProductDetails(product: Product, $event) {
+    $event.stopPropagation();
     const productComponent = this.modalService.open(ProductDetailsComponent);
     productComponent.componentInstance.product = product
   }
@@ -65,7 +66,7 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  addToCart(product: Product) {
+  addToCart(product: Product, parent) {
     this.cartService.addToCart(product);
   }
 

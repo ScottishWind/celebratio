@@ -33,4 +33,13 @@ export class Product {
     this.stars = stars;
     this.label = label;
   }
+
+  getActualPrice(): Number {
+    if (this.discount > 0) {
+      return this.priceAfterDiscount
+    }
+    else {
+      return this.price;
+    }
+  }
 }

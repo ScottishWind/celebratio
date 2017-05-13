@@ -20,7 +20,7 @@
           <input type='text' value='1' class='qty' #qty/>
           <input type='button' value='+' class='qtyplus' (click)="qty.value = addQty(qty.value)"/>
           <br>
-          <small><b>Rs:{{product.price * qty.value}}</b></small>
+          <small><b>Rs:{{product.getActualPrice() * qty.value}}</b></small>
         </div>
       </div>
     </div>
