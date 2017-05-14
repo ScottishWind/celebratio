@@ -1,4 +1,4 @@
-import {Component, OnInit, NgModule, ViewChild, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, NgModule, Input} from '@angular/core';
 import {Product} from './model/product';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../services/productService';
@@ -15,6 +15,8 @@ import {ProductDetailsComponent} from '../product-details/product-details.compon
 export class ProductsComponent implements OnInit {
 
   productsByCategoryMap: Map<String,Product[]>;
+
+  @Input("itemPerTemplate") itemPerTemplate: Number;
 
 
   constructor(private productService: ProductService, private modalService: NgbModal, private cartService: CartService) {

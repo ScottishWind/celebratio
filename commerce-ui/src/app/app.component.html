@@ -1,10 +1,10 @@
 <div class="dark-background">
-  <app-headercomponent></app-headercomponent>
-
-  <app-bannercomponent></app-bannercomponent>
-
-  <app-productscomponent></app-productscomponent>
-
+  <div class="row">
+    <app-headercomponent></app-headercomponent>
+  </div>
+  <div class="row visible-md">
+    <app-productscomponent [itemPerTemplate]="5"></app-productscomponent>
+  </div>
   <div class="footer navbar-fixed-bottom" align="center">
     Contact us : +912345677 &ensp; &ensp;
     Email : <a href="#">123@hjlllll.com</a>

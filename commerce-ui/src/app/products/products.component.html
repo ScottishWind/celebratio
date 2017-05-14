@@ -2,14 +2,13 @@
   <div class="container-fluid product-container-style" *ngFor="let products of productsByCategoryMap | mapToIterable">
     <h2 class="product-heading"><b>{{products.key}}</b></h2>
     <ngb-carousel class="row" data-interval="false">
-      <ng-template ngbSlide *ngFor="let productList of products.value | splitArray : 4">
+      <ng-template class="template" ngbSlide *ngFor="let productList of products.value | splitArray : itemPerTemplate">
         <div class="overlay-left"></div>
         <div class="thubmnail" *ngFor=" let product of productList">
           <div class="box">
             <div *ngIf="(product.discount > 0 && product.discount != null)" class="ribbon"><span>{{product.discount}} % off</span>
             </div>
-            <img (click)="openProductDetails(product,$event)" class="image-align" src="{{product.images[0]}}"
-                 height="250">
+            <img (click)="openProductDetails(product,$event)" class="image-align" src="{{product.images[0]}}">
           </div>
           <div class="carousal-caption" style="padding-left: 35px">
             <p></p>

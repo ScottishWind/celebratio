@@ -1,13 +1,18 @@
 .productlist {
   padding-top: 300px;
+  position: relative;
+  overflow-y: auto;
 }
 
 .product-container-style {
-  padding-top: 30px;
+  padding-top: 3%;
+  position: relative;
+  align-self: center;
 }
 
 .image-align {
-  padding: 5%;
+  padding: 0%;
+  width: 100%;
 }
 
 .body-background {
@@ -45,7 +50,7 @@ label {
   text-align: left;
   clear: both;
   float: left;
-  margin-right: 15px;
+  margin-right: 2%;
 }
 
 .product-heading {
@@ -54,15 +59,7 @@ label {
 }
 
 .overlay-left {
-  position: relative;
-  padding-left: 100px;
-  z-index: 10;
-}
-
-.overlay-right {
-  position: relative;
-  padding-right: 50px;
-  z-index: 10;
+  padding-left: 50px;
 }
 
 .box {
@@ -70,7 +67,7 @@ label {
   border: 1px solid #BBB;
   background: transparent;
   float: left;
-  margin: 20px
+  margin: 5%
 }
 
 .ribbon {
@@ -156,11 +153,11 @@ label {
 }
 
 /deep/
-ngb-carousel .carousel-control {
-  position: absolute;
-  top: 50%; /* pushes the icon in the middle of the height */
-  z-index: 0;
-  display: inline-block;
+.carousel-control-prev {
+  max-width: 5%;
 }
 
-
+/deep/
+.carousel-control-next {
+  max-width: 5%;
+}
