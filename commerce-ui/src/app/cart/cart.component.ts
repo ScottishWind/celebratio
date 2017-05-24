@@ -41,4 +41,5 @@ export class CartComponent {
     return parseInt(value) - 1;
   }
 
+
 }

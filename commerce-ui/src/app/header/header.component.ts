@@ -1,7 +1,7 @@
 import {Component, OnInit, NgModule, ViewChild} from '@angular/core';
-import {Product} from '../products/model/product';
 import {CartComponent} from '../cart/cart.component';
-
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UserComponent} from '../user/user.component'
 
 @Component({
   selector: 'app-headercomponent',
@@ -10,12 +10,15 @@ import {CartComponent} from '../cart/cart.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
 
   }
 
   ngOnInit() {
   }
 
+  openRegistration() {
+    this.modalService.open(UserComponent);
+  }
 
 }

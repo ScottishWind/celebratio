@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MapToIterable} from './shared/mapsToIterable';
@@ -13,6 +13,7 @@ import {AppComponent} from './app.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import {CartComponent} from './cart/cart.component';
 import {CartService} from './services/cartService';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +24,17 @@ import {CartService} from './services/cartService';
     BannerComponent,
     ProductsComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    UserComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
-  entryComponents: [ProductDetailsComponent],
+  entryComponents: [ProductDetailsComponent, UserComponent],
   providers: [CartService],
   bootstrap: [AppComponent]
 })
