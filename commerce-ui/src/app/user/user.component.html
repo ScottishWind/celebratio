@@ -5,63 +5,129 @@
   </button>
 </div>
 <div class="modal-body">
+  <div class="col-sm-6 col-md-4">
+    <image-upload
+      [max]="1"
+      [url]="'example.com/images/upload'"
+      [buttonCaption]="'Select Images!'"
+      [dropBoxMessage]="'Drop your images here!'"
+    >Profile pics
+    </image-upload>
+  </div>
+  <br>
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
     <div class="form-group"
          [ngClass]="{'has-error':!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched}">
       <label>First Name:</label>
-      <input class="form-control" type="text" placeholder="John" [formControl]="complexForm.controls['firstName']">
+      <input class="form-control" type="text" placeholder="FirstName" [formControl]="complexForm.controls['firstName']">
       <div *ngIf="complexForm.controls['firstName'].hasError('required') && complexForm.controls['firstName'].touched"
            class="alert alert-danger">You must include a first name.
       </div>
     </div>
     <div class="form-group"
          [ngClass]="{'has-error':!complexForm.controls['lastName'].valid && complexForm.controls['lastName'].touched}">
-      <label>Last Name</label>
-      <input class="form-control" type="text" placeholder="Doe" [formControl]="complexForm.controls['lastName']">
+      <label>Last Name:</label>
+      <input class="form-control" type="text" placeholder="LastName" [formControl]="complexForm.controls['lastName']">
       <div *ngIf="complexForm.controls['lastName'].hasError('required') && complexForm.controls['lastName'].touched"
            class="alert alert-danger">You must include a last name.
       </div>
-      <div *ngIf="complexForm.controls['lastName'].hasError('minlength') && complexForm.controls['lastName'].touched"
-           class="alert alert-danger">Your last name must be at least 5 characters long.
-      </div>
-      <div *ngIf="complexForm.controls['lastName'].hasError('maxlength') && complexForm.controls['lastName'].touched"
-           class="alert alert-danger">Your last name cannot exceed 10 characters.
-      </div>
     </div>
-    <div class="form-group">
-      <label>Gender</label>
-      <div class="alert alert-danger"
-           *ngIf="!complexForm.controls['gender'].valid && complexForm.controls['gender'].touched">You must select a
-        gender.
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+      <label>Email:</label>
+      <input class="form-control" type="email" placeholder="abc@bn.com" [formControl]="complexForm.controls['email']">
+      <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched"
+           class="alert alert-danger">You must include a Email.
+      </div>
+      <div *ngIf="complexForm.controls['email'].hasError('email') && complexForm.controls['email'].touched"
+           class="alert alert-danger">Your email is invalid
       </div>
     </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="gender" value="Male" [formControl]="complexForm.controls['gender']">
-        Male
-      </label>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['phoneNumber'].valid && complexForm.controls['phoneNumber'].touched}">
+      <label>Phone:</label>
+      <input class="form-control" type="number" placeholder="0123456789"
+             [formControl]="complexForm.controls['phoneNumber']">
     </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="gender" value="Female" [formControl]="complexForm.controls['gender']">
-        Female
-      </label>
+
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+      <label>Password:</label>
+      <input class="form-control" type="password" [formControl]="complexForm.controls['password']">
+      <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched"
+           class="alert alert-danger">You must include a password.
+      </div>
+      <div *ngIf="complexForm.controls['password'].hasError('minlength') && complexForm.controls['password'].touched"
+           class="alert alert-danger">Your password must be at least 5 characters long.
+      </div>
+      <div *ngIf="complexForm.controls['password'].hasError('maxlength') && complexForm.controls['password'].touched"
+           class="alert alert-danger">Your password cannot exceed 10 characters.
+      </div>
     </div>
+
+
     <div class="form-group">
-      <label>Activities</label>
+      <label>Address :</label>
+      <input class="form-control" type="text" placeholder="firstline" [formControl]="complexForm.controls['firstLine']">
+      <input class="form-control" type="text" placeholder="secondline"
+             [formControl]="complexForm.controls['secondLine']">
+      <input class="form-control" type="text" placeholder="thirdline" [formControl]="complexForm.controls['thirdLine']">
+      <input class="form-control" type="text" placeholder="landmark" [formControl]="complexForm.controls['landmark']">
     </div>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="hiking" name="hiking" [formControl]="complexForm.controls['hiking']"> Hiking
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="swimming" name="swimming" [formControl]="complexForm.controls['swimming']"> Swimming
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="running" name="running" [formControl]="complexForm.controls['running']"> Running
-    </label>
+    <br><br/>
+
+
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['postcode'].valid && complexForm.controls['postcode'].touched}">
+      <label>PostCode:</label>
+      <input class="form-control" type="text" [formControl]="complexForm.controls['postcode']">
+      <div *ngIf="complexForm.controls['postcode'].hasError('required') && complexForm.controls['postcode'].touched"
+           class="alert alert-danger">You must include a Postcode.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['city'].valid && complexForm.controls['city'].touched}">
+      <label>City:</label>
+      <select class="form-control" [formControl]="complexForm.controls['city']">
+        <option *ngFor="let city of cities" [value]="city">
+          {{city}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['city'].hasError('required') && complexForm.controls['city'].touched"
+           class="alert alert-danger">You must include a city.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['state'].valid && complexForm.controls['state'].touched}">
+      <label>State:</label>
+      <select class="form-control" [formControl]="complexForm.controls['state']">
+        <option *ngFor="let state of states" [value]="state">
+          {{state}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['state'].hasError('required') && complexForm.controls['state'].touched"
+           class="alert alert-danger">You must include a State.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['country'].valid && complexForm.controls['country'].touched}">
+      <label>Country:</label>
+      <select class="form-control" [formControl]="complexForm.controls['country']">
+        <option *ngFor="let country of countries" [value]="country">
+          {{country}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['country'].hasError('required') && complexForm.controls['country'].touched"
+           class="alert alert-danger">You must include a Country.
+      </div>
+    </div>
+
+
     <div class="form-group">
-      <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit {{complexForm.valid}}
+      </button>
     </div>
   </form>
+
 </div>
 

@@ -5,6 +5,8 @@ import {HttpModule} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MapToIterable} from './shared/mapsToIterable';
 import {SplitArray} from './shared/splitArray';
+import {ImageUploadModule} from "angular2-image-upload"
+
 
 import {HeaderComponent} from './header/header.component';
 import {BannerComponent} from './banner/banner.component';
@@ -29,6 +31,7 @@ import {UserComponent} from './user/user.component';
   ],
   imports: [
     NgbModule.forRoot(),
+    ImageUploadModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
