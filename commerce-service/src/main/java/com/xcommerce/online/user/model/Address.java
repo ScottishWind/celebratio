@@ -1,7 +1,7 @@
 package com.xcommerce.online.user.model;
 
 class Address {
-	
+	String addressID;
 	String firstLine;
 	String secondLine;
 	String thirdLine;
@@ -114,6 +114,18 @@ class Address {
 		return "Address [firstLine=" + firstLine + ", secondLine=" + secondLine + ", thirdLine=" + thirdLine
 				+ ", postcode=" + postcode + ", city=" + city + ", state=" + state + ", country=" + country
 				+ ", landmark=" + landmark + "]";
+	}
+	/**
+	 * @return the addressID
+	 */
+	public String getAddressID() {
+		return addressID;
+	}
+	/**
+	 * @param addressID the addressID to set
+	 */
+	public void setAddressID(String addressID) {
+		this.addressID = addressID;
 	}
 	
 
