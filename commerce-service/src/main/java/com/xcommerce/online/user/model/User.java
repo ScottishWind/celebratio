@@ -2,15 +2,21 @@ package com.xcommerce.online.user.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+
 public class User {
+	@Id
 	String userID;
 	String firstName;
 	String lastName;
-	String phoneNumber;
+	String mobileNumber;
 	String email;
 	String profilePicture;
-	Address billingAddress;
+	List<Address> billingAddress;
 	List<Address> deliveryAddress;
+	boolean isActive = true;
+	boolean isEmailValidated = false;
+	boolean isMobileNumberValidated = false;
 
 	/**
 	 * @return the userID
@@ -60,16 +66,16 @@ public class User {
 	/**
 	 * @return the phoneNumber
 	 */
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
 
 	/**
 	 * @param phoneNumber
 	 *            the phoneNumber to set
 	 */
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	/**
@@ -105,7 +111,7 @@ public class User {
 	/**
 	 * @return the billingAddress
 	 */
-	public Address getBillingAddress() {
+	public List<Address> getBillingAddress() {
 		return billingAddress;
 	}
 
@@ -113,7 +119,7 @@ public class User {
 	 * @param billingAddress
 	 *            the billingAddress to set
 	 */
-	public void setBillingAddress(Address billingAddress) {
+	public void setBillingAddress(List<Address> billingAddress) {
 		this.billingAddress = billingAddress;
 	}
 
@@ -139,9 +145,51 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", profilePicture=" + profilePicture + ", billingAddress="
+		return "User [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
+				+ mobileNumber + ", email=" + email + ", profilePicture=" + profilePicture + ", billingAddress="
 				+ billingAddress + ", deliveryAddress=" + deliveryAddress + "]";
+	}
+
+	/**
+	 * @return the isActive
+	 */
+	public boolean isActive() {
+		return isActive;
+	}
+
+	/**
+	 * @param isActive the isActive to set
+	 */
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	/**
+	 * @return the isEmailValidated
+	 */
+	public boolean isEmailValidated() {
+		return isEmailValidated;
+	}
+
+	/**
+	 * @param isEmailValidated the isEmailValidated to set
+	 */
+	public void setEmailValidated(boolean isEmailValidated) {
+		this.isEmailValidated = isEmailValidated;
+	}
+
+	/**
+	 * @return the isMobileNumberValidated
+	 */
+	public boolean isMobileNumberValidated() {
+		return isMobileNumberValidated;
+	}
+
+	/**
+	 * @param isMobileNumberValidated the isMobileNumberValidated to set
+	 */
+	public void setMobileNumberValidated(boolean isMobileNumberValidated) {
+		this.isMobileNumberValidated = isMobileNumberValidated;
 	}
 
 }
