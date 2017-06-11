@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title">Registration</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div>
+  <div class="h-25 w-25 d-inline-block">
+    <img class="card-img-top img-fluid" (click)="mainImage.nativeElement.src=image"
+         src="{{complexForm.controls['profilePic'].value}}"
+         onError = "this.src = 'https://www.drupal.org/files/profile_default.png'"/>
+  </div>
+</div>
+<div class="modal-body">
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['profilePic'].valid && complexForm.controls['profilePic'].touched}">
+      <label>Profile Pic:</label>
+      <input class="form-control" type="text" placeholder="Profile Pic url"
+             [formControl]="complexForm.controls['profilePic']">
+      <div *ngIf="complexForm.controls['profilePic'].hasError('required') && complexForm.controls['profilePic'].touched"
+           class="alert alert-danger">You must include a profile pic.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+      <label>Email:</label>
+      <input class="form-control" type="email" placeholder="abc@bn.com" [formControl]="complexForm.controls['email']">
+      <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched"
+           class="alert alert-danger">You must include a Email.
+      </div>
+      <div *ngIf="complexForm.controls['email'].hasError('email') && complexForm.controls['email'].touched"
+           class="alert alert-danger">Your email is invalid
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+      <label>Password:</label>
+      <input class="form-control" type="password" [formControl]="complexForm.controls['password']">
+      <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched"
+           class="alert alert-danger">You must include a password.
+      </div>
+      <div *ngIf="complexForm.controls['password'].hasError('minlength') && complexForm.controls['password'].touched"
+           class="alert alert-danger">Your password must be at least 5 characters long.
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':!complexForm.controls['rePassword'].valid && complexForm.controls['rePassword'].touched}">
+        <label>Re-enter Password:</label>
+        <input class="form-control" type="password" [formControl]="complexForm.controls['rePassword']">
+        <div
+          *ngIf="complexForm.controls['rePassword'].hasError('required') && complexForm.controls['rePassword'].touched"
+          class="alert alert-danger">You must re enter the password.
+        </div>
+        <div class="alert alert-danger" *ngIf="complexForm.controls['rePassword'].hasError('MatchPassword')">Password
+          not match
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit
+      </button>
+      <button type=" button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close
+      </button>
+    </div>
+  </form>
+</div>
