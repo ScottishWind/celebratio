@@ -18,10 +18,13 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author gabbu
  *
  */
+@Component
 public class AESUtilityImpl implements AESUtility {
 
 	// TODO
@@ -57,20 +60,19 @@ public class AESUtilityImpl implements AESUtility {
 	 * String, java.lang.String)
 	 */
 	@Override
-	public Boolean validateSecurityToken(String userID, String token)
-			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException,
-			IllegalBlockSizeException, BadPaddingException {
+	public String validateSecurityToken(String token) throws NoSuchAlgorithmException, NoSuchPaddingException,
+			InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 
 		Cipher cipher = initializeCipher(Cipher.DECRYPT_MODE);
 
 		byte[] encryptedToken = DatatypeConverter.parseHexBinary(token);
 		String user = null;
-		try{
+		try {
 			user = new String(cipher.doFinal(encryptedToken), "UTF-8");
-		}catch(Exception ex){
-			//stay silent
+		} catch (Exception ex) {
+			// stay silent
 		}
-		return userID.equalsIgnoreCase(user);
+		return user;
 	}
 
 	/**

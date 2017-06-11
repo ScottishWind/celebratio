@@ -41,8 +41,8 @@ public class UserFacadeImpl implements UserFacade<User> {
 	 * @see com.xcommerce.online.user.facade.UserFacade#deactivateUser(java.lang.String)
 	 */
 	@Override
-	public void deactivateUser(String email) {
-		User user = service.getUser(email);
+	public void deactivateUser(String userID) {
+		User user = service.getUser(userID);
 		user.setActive(false);
 		service.modifyUser(user);
 	}
@@ -51,8 +51,8 @@ public class UserFacadeImpl implements UserFacade<User> {
 	 * @see com.xcommerce.online.user.facade.UserFacade#deleteUser(java.lang.String)
 	 */
 	@Override
-	public void deleteUser(String email) {
-		service.deleteUser(email);
+	public void deleteUser(String userID) {
+		service.deleteUser(userID);
 
 	}
 
@@ -60,8 +60,8 @@ public class UserFacadeImpl implements UserFacade<User> {
 	 * @see com.xcommerce.online.user.facade.UserFacade#getUser(java.lang.String)
 	 */
 	@Override
-	public User getUser(String email) {
-		return service.getUser(email);
+	public User getUser(String userID) {
+		return service.getUser(userID);
 
 	}
 

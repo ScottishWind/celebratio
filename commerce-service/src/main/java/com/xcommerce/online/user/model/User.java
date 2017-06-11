@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 
 public class User {
 	@Id
+	String userID;
 	String email;
 	String firstName;
 	String lastName;
@@ -126,17 +127,7 @@ public class User {
 		this.deliveryAddress = deliveryAddress;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
-				+ mobileNumber + ", email=" + email + ", profilePicture=" + profilePicture + ", billingAddress="
-				+ billingAddress + ", deliveryAddress=" + deliveryAddress + "]";
-	}
+	
 
 	/**
 	 * @return the isActive
@@ -206,6 +197,32 @@ public class User {
 	 */
 	public void setUserType(String userType) {
 		UserType = userType;
+	}
+
+	/**
+	 * @return the userID
+	 */
+	public String getUserID() {
+		return userID;
+	}
+
+	/**
+	 * @param userID the userID to set
+	 */
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", mobileNumber=" + mobileNumber + ", password=" + password + ", UserType=" + UserType
+				+ ", profilePicture=" + profilePicture + ", billingAddress=" + billingAddress + ", deliveryAddress="
+				+ deliveryAddress + ", isActive=" + isActive + ", isEmailValidated=" + isEmailValidated
+				+ ", isMobileNumberValidated=" + isMobileNumberValidated + "]";
 	}
 
 }

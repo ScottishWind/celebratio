@@ -53,9 +53,8 @@ public interface AESUtility {
 	 * @throws IllegalBlockSizeException
 	 * @throws UnsupportedEncodingException
 	 */
-	public Boolean validateSecurityToken(String userID, String token)
-			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException,
-			IllegalBlockSizeException, BadPaddingException;
+	public String validateSecurityToken(String token) throws NoSuchAlgorithmException, NoSuchPaddingException,
+			InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException;
 
 	/**
 	 * Method used to generate AES Key

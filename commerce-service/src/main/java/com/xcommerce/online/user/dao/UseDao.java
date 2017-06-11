@@ -15,11 +15,11 @@ public interface UseDao<T extends User> {
 	
 	public void updateUser(T user);
 	
-	public void deactivateUserByEmail(String email);
+	public void deactivateUserByID(String email);
 	
-	public void deleteUserByEmail(String email);
+	public void deleteUserByID(String email);
 	
-	public User getUserByEmail(String email);
+	public User getUserByID(String email);
 	
 	public void deleteAllUser();
 	

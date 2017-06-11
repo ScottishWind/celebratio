@@ -32,20 +32,20 @@ public class UserServiceImpl implements UserService<User> {
 	}
 
 	@Override
-	public void deactivateUser(String email) {
-		userDao.deactivateUserByEmail(email);
+	public void deactivateUser(String userID) {
+		userDao.deactivateUserByID(userID);
 
 	}
 
 	@Override
-	public void deleteUser(String email) {
-		userDao.deleteUserByEmail(email);
+	public void deleteUser(String userID) {
+		userDao.deleteUserByID(userID);
 
 	}
 
 	@Override
-	public User getUser(String email) {
-		return userDao.getUserByEmail(email);
+	public User getUser(String userID) {
+		return userDao.getUserByID(userID);
 
 	}
 

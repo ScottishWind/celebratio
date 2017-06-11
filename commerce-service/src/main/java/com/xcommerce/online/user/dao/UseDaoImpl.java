@@ -33,20 +33,20 @@ public class UseDaoImpl implements UseDao<User> {
 	}
 
 	@Override
-	public void deactivateUserByEmail(String email) {
+	public void deactivateUserByID(String userID) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteUserByEmail(String email) {
-		repository.delete(email);
+	public void deleteUserByID(String userID) {
+		repository.delete(userID);
 		
 	}
 
 	@Override
-	public User getUserByEmail(String email) {
-		return repository.findOne(email);	
+	public User getUserByID(String userID) {
+		return repository.findOne(userID);	
 	}
 
 	@Override
