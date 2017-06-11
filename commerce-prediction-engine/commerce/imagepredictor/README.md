@@ -2,9 +2,20 @@
 README
 ****************
 
-To Predict:
+CLASSIFIERS:
+durga
+ganesh
+shiva
+krishna
+hanuman
 
+
+MODEL ACCURACCY :
+Final test accuracy = 81.8% (N=22)
+
+To Predict:
     python imageClassification.py "<image to predict>"
+
 
 To Train the model run (Already done):
 
