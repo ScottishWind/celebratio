@@ -1,25 +1,20 @@
 import {Address} from "./address"
 
 export class User {
-  userId: String;
+  profilePicture: String;
+  email: String;
+  password: String;
   firstName: String;
   lastName: String;
-  phoneNumber: String;
-  email: String;
-  profilePicture: String;
+  mobileNumber: String;
   address: Address;
   billingAddress: Address[];
-  password : String;
+  userType: String;
 
-  constructor(userId: String, firstName: String, lastName: String, phoneNumber: String, email: String, profilePicture: String, address: Address, billingAddress: Address[], password: String) {
-    this.userId = userId;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
+  constructor(profilePicture: String, email: String, password: String, userType: String) {
     this.profilePicture = profilePicture;
-    this.address = address;
-    this.billingAddress = billingAddress;
+    this.email = email;
     this.password = password;
+    this.userType = userType;
   }
 }

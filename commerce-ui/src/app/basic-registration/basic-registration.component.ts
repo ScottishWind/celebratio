@@ -1,20 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {AbstractControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {UserService} from '../services/userService';
 
 @Component({
   selector: 'app-basic-registration',
   templateUrl: './basic-registration.component.html',
-  styleUrls: ['./basic-registration.component.css']
+  styleUrls: ['./basic-registration.component.css'],
+  providers: [UserService]
 })
 export class BasicRegistrationComponent {
 
   complexForm: FormGroup;
   imageLocation = "";
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {
     this.complexForm = fb.group({
-      'profilePic': [null,null],
+      'profilePic': [null, null],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(5)])],
       'rePassword': [null, Validators.compose([Validators.required])]
@@ -24,8 +26,9 @@ export class BasicRegistrationComponent {
   }
 
 
-  submitForm(value: any) {
-    console.log(value);
+  submitForm(user: any) {
+    console.log("Registering ", user);
+    this.userService.registerUser(user);
   }
 }
 
