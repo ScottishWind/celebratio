@@ -6,11 +6,13 @@ import org.springframework.data.annotation.Id;
 
 public class User {
 	@Id
-	String userID;
+	String email;
 	String firstName;
 	String lastName;
 	String mobileNumber;
-	String email;
+	String password;
+	//user type like Facebook, Google or native application user
+	String UserType;
 	String profilePicture;
 	List<Address> billingAddress;
 	List<Address> deliveryAddress;
@@ -18,20 +20,6 @@ public class User {
 	boolean isEmailValidated = false;
 	boolean isMobileNumberValidated = false;
 
-	/**
-	 * @return the userID
-	 */
-	public String getUserID() {
-		return userID;
-	}
-
-	/**
-	 * @param userID
-	 *            the userID to set
-	 */
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
 
 	/**
 	 * @return the firstName
@@ -145,7 +133,7 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
 				+ mobileNumber + ", email=" + email + ", profilePicture=" + profilePicture + ", billingAddress="
 				+ billingAddress + ", deliveryAddress=" + deliveryAddress + "]";
 	}
@@ -190,6 +178,34 @@ public class User {
 	 */
 	public void setMobileNumberValidated(boolean isMobileNumberValidated) {
 		this.isMobileNumberValidated = isMobileNumberValidated;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the userType
+	 */
+	public String getUserType() {
+		return UserType;
+	}
+
+	/**
+	 * @param userType the userType to set
+	 */
+	public void setUserType(String userType) {
+		UserType = userType;
 	}
 
 }

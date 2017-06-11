@@ -21,5 +21,7 @@ public interface UseDao<T extends User> {
 	
 	public User getUserByEmail(String email);
 	
+	public void deleteAllUser();
+	
 
 }

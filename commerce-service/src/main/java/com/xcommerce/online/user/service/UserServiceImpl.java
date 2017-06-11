@@ -49,4 +49,10 @@ public class UserServiceImpl implements UserService<User> {
 
 	}
 
+	@Override
+	public void deleteAllUser() {
+		userDao.deleteAllUser();
+		
+	}
+
 }

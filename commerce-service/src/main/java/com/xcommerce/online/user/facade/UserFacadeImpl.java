@@ -65,4 +65,10 @@ public class UserFacadeImpl implements UserFacade<User> {
 
 	}
 
+	@Override
+	public void deleteAllUser() {
+		service.deleteAllUser();
+		
+	}
+
 }

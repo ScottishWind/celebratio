@@ -40,13 +40,19 @@ public class UseDaoImpl implements UseDao<User> {
 
 	@Override
 	public void deleteUserByEmail(String email) {
-		repository.deleteByEmail(email);
+		repository.delete(email);
 		
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		return repository.findByEmail(email);	
+		return repository.findOne(email);	
+	}
+
+	@Override
+	public void deleteAllUser() {
+		repository.deleteAll();
+		
 	}
 
 }

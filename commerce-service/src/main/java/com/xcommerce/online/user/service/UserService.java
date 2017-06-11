@@ -21,4 +21,6 @@ public interface UserService<T extends User> {
 	
 	public User getUser(String userID);
 	
+	public void deleteAllUser();
+	
 }

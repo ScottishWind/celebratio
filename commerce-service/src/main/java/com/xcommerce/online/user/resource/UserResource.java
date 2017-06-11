@@ -28,15 +28,22 @@ public class UserResource {
 	private final Logger logger = LoggerFactory.getLogger(UserResource.class);
 
 	@ApiOperation(value = "Register a new User in the site", nickname = "Register new User")
-	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
 	ResponseEntity<?> createUser(@RequestBody User user) {
 		logger.info(String.format("New User Creation request %S", user));
 		facade.createUser(user);
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
+	
+	@ApiOperation(value = "User login", nickname = "Register new User")
+	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> login(@RequestBody User user) {
+		logger.info(String.format("User login request %S", user));
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
 
-	@ApiOperation(value = "Modify details of a registered User", nickname = "Edit details of an existing User")
-	@RequestMapping(value = "/modify", method = RequestMethod.POST, consumes = "application/json")
+	@ApiOperation(value = "Modify User Profile", nickname = "Edit details of an existing User")
+	@RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "application/json")
 	ResponseEntity<?> modifyUser(@RequestBody User user) {
 		logger.info(String.format("Modify Existing User %S", user));
 		facade.modifyUser(user);
@@ -50,6 +57,14 @@ public class UserResource {
 		facade.deleteUser(email);
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
+	
+	@ApiOperation(value = "Permanently Delete All Users **Risky Operation**", nickname = "Permanently Delete User profile")
+	@RequestMapping(value = "/delete/all", method = RequestMethod.GET)
+	ResponseEntity<?> deleteAllUser() {
+		logger.info("Completely delete user from website!");
+		facade.deleteAllUser();
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
 
 	@ApiOperation(value = "Temporarily Deactivate User profile", nickname = "Temporarily Deactivate User profile")
 	@RequestMapping(value = "/deactivate", method = RequestMethod.POST, consumes = "application/json")
@@ -60,7 +75,7 @@ public class UserResource {
 	}
 
 	@ApiOperation(value = "View User Details", nickname = "View User Details")
-	@RequestMapping(value = "/view", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/get", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	User getDetails(@RequestBody @NotEmpty String email) {
 		logger.info("View user Details!");
 		return facade.getUser(email);
