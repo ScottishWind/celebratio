@@ -26,7 +26,7 @@ public class AESUtilityImpl implements AESUtility {
 
 	// TODO
 	// this needs to be moved to config server properties
-	private static final String AES_KEY = "QfNrpAxsTxR3M8vK/jOnMQ==";
+	private static final String AES_KEY = "LtJS6CRjZwTR0vXVpoy4ig==";
 
 	/*
 	 * (non-Javadoc)
@@ -64,8 +64,12 @@ public class AESUtilityImpl implements AESUtility {
 		Cipher cipher = initializeCipher(Cipher.DECRYPT_MODE);
 
 		byte[] encryptedToken = DatatypeConverter.parseHexBinary(token);
-
-		String user = new String(cipher.doFinal(encryptedToken), "UTF-8");
+		String user = null;
+		try{
+			user = new String(cipher.doFinal(encryptedToken), "UTF-8");
+		}catch(Exception ex){
+			//stay silent
+		}
 		return userID.equalsIgnoreCase(user);
 	}
 

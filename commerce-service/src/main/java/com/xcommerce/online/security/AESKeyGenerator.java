@@ -17,9 +17,9 @@ public class AESKeyGenerator {
 		AESUtility aes = new AESUtilityImpl();
 		try {
 			System.out.println(aes.generateAESKey());
-			//System.out.println(aes.generateSecurityToken("123456"));
-			//System.out.println(aes.validateSecurityToken("123456",
-			//"C12F537DDFB91F8A1A7F902D7809354D"));
+			System.out.println(aes.generateSecurityToken("123456"));
+			System.out.println(aes.validateSecurityToken("123456",
+			"AB62B93BBD5FE250C6745599C1136D"));
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
