@@ -14,7 +14,7 @@ export class BasicRegistrationComponent {
 
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {
     this.complexForm = fb.group({
-      'profilePic': [null, Validators.compose([Validators.required])],
+      'profilePic': [null,null],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(5)])],
       'rePassword': [null, Validators.compose([Validators.required])]

@@ -8,19 +8,15 @@
   <div class="h-25 w-25 d-inline-block">
     <img class="card-img-top img-fluid" (click)="mainImage.nativeElement.src=image"
          src="{{complexForm.controls['profilePic'].value}}"
-         onError = "this.src = 'https://www.drupal.org/files/profile_default.png'"/>
+         onError="this.src = 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'"/>
   </div>
 </div>
 <div class="modal-body">
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-    <div class="form-group"
-         [ngClass]="{'has-error':!complexForm.controls['profilePic'].valid && complexForm.controls['profilePic'].touched}">
+    <div class="form-group">
       <label>Profile Pic:</label>
       <input class="form-control" type="text" placeholder="Profile Pic url"
              [formControl]="complexForm.controls['profilePic']">
-      <div *ngIf="complexForm.controls['profilePic'].hasError('required') && complexForm.controls['profilePic'].touched"
-           class="alert alert-danger">You must include a profile pic.
-      </div>
     </div>
     <div class="form-group"
          [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
