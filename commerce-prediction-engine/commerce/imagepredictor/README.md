@@ -3,6 +3,7 @@ README
 ****************
 
 CLASSIFIERS:
+
 durga
 ganesh
 shiva
@@ -11,9 +12,11 @@ hanuman
 
 
 MODEL ACCURACCY :
+
 Final test accuracy = 81.8% (N=22)
 
 To Predict:
+
     python imageClassification.py "<image to predict>"
 
 To Train the model run (Already done):
