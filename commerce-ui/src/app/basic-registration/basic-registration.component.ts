@@ -28,7 +28,15 @@ export class BasicRegistrationComponent {
 
   submitForm(user: any) {
     console.log("Registering ", user);
-    this.userService.registerUser(user);
+    let res = this.userService.registerUser(user);
+    res.then(function (value) {
+      if (value == "success") {
+        console.log("Registration Successful");
+      }
+      else {
+        console.log("Registration Failed");
+      }
+    });
   }
 }
 

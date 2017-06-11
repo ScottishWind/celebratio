@@ -15,14 +15,14 @@ export class UserService {
   }
 
   registerUser(form: any) {
-    let user = new User(form.profilePicture, form.email, form.password, "native");
+    let user = new User(form.profilePic, form.email, form.password, "native");
     let headers = new Headers();
     headers.append("Content-type", 'application/json');
     headers.append("accept", 'application/json');
     let options = new RequestOptions({headers: headers});
     return this.http.post(Constants._serviceUrl + '/user/register', JSON.stringify(user), options)
       .toPromise()
-      .then(res => res.text())
+      .then(res => "success")
       .catch(e => this.handleError(e));
   }
 

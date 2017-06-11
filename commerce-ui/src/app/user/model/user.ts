@@ -9,12 +9,12 @@ export class User {
   mobileNumber: String;
   address: Address;
   billingAddress: Address[];
-  userType: String;
+  UserType: String;
 
-  constructor(profilePicture: String, email: String, password: String, userType: String) {
+  constructor(profilePicture: String, email: String, password: String, UserType: String) {
     this.profilePicture = profilePicture;
     this.email = email;
     this.password = password;
-    this.userType = userType;
+    this.UserType = UserType;
   }
 }
