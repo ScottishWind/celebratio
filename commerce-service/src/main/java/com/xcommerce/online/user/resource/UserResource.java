@@ -1,6 +1,7 @@
 package com.xcommerce.online.user.resource;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +20,6 @@ import com.xcommerce.online.user.facade.UserFacade;
 import com.xcommerce.online.user.model.User;
 
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
@@ -40,10 +41,16 @@ public class UserResource {
 	}
 
 	@ApiOperation(value = "User login", nickname = "Register new User")
-	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
-	ResponseEntity<?> login(@RequestBody User user) {
+	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	User login(@RequestBody User user, HttpServletResponse response) throws Exception {
 		logger.info(String.format("User login request %S", user));
-		return new ResponseEntity<>("success", HttpStatus.OK);
+		User userDetails = facade.login(user);
+		if (userDetails != null){
+			response.setHeader("cookie", "SECURITY-TOKEN=" + facade.getToken(userDetails.getUserID()));
+		return userDetails;
+		}else{
+			throw  new Exception("Login Failed!");
+		}
 	}
 
 	@ApiOperation(value = "Modify User Profile", nickname = "Edit details of an existing User")
@@ -77,7 +84,7 @@ public class UserResource {
 	ResponseEntity<?> deactivateUser() {
 		logger.info("Temporarily deactivate user from website!");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String userID = (String) auth.getPrincipal();		
+		String userID = (String) auth.getPrincipal();
 		facade.deactivateUser(userID);
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
@@ -90,6 +97,13 @@ public class UserResource {
 		String userID = (String) auth.getPrincipal();
 		logger.info("View user Details!" + userID);
 		return facade.getUser(userID);
+	}
+
+	@ApiOperation(value = "Get User Token", nickname = "Get User Token")
+	@RequestMapping(value = "/{userID}/token", method = RequestMethod.GET)
+	ResponseEntity<?> getToken(@PathVariable("userID") String userID) {
+		logger.info("Get Token for user " + userID);
+		return new ResponseEntity<>(facade.getToken(userID), HttpStatus.OK);
 	}
 
 }

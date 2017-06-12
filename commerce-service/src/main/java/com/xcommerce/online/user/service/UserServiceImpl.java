@@ -52,7 +52,19 @@ public class UserServiceImpl implements UserService<User> {
 	@Override
 	public void deleteAllUser() {
 		userDao.deleteAllUser();
-		
+
 	}
 
+	@Override
+	public User login(User user) {
+		// TODO Auto-generated method stub
+		User userFromDB = userDao.getUserByEmail(user.getEmail());
+		if (userFromDB != null) {
+			if (user.getPassword().equals(userFromDB.getPassword())) {
+				userFromDB.setPassword(null);
+				return userFromDB;
+			}
+		}
+		return null;
+	}
 }

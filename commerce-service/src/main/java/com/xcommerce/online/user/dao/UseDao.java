@@ -10,18 +10,19 @@ import com.xcommerce.online.user.model.User;
  *
  */
 public interface UseDao<T extends User> {
-	
+
 	public void insertUser(T user);
-	
+
 	public void updateUser(T user);
-	
-	public void deactivateUserByID(String email);
-	
-	public void deleteUserByID(String email);
-	
-	public User getUserByID(String email);
-	
+
+	public void deactivateUserByID(String userID);
+
+	public void deleteUserByID(String userID);
+
+	public User getUserByID(String userID);
+
+	public User getUserByEmail(String email);
+
 	public void deleteAllUser();
-	
 
 }
