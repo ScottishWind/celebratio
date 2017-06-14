@@ -40,16 +40,16 @@ public class UserResource {
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "User login", nickname = "Register new User")
+	@ApiOperation(value = "User Login", nickname = "User Login")
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	User login(@RequestBody User user, HttpServletResponse response) throws Exception {
 		logger.info(String.format("User login request %S", user));
 		User userDetails = facade.login(user);
-		if (userDetails != null){
+		if (userDetails != null) {
 			response.setHeader("cookie", "SECURITY-TOKEN=" + facade.getToken(userDetails.getUserID()));
-		return userDetails;
-		}else{
-			throw  new Exception("Login Failed!");
+			return userDetails;
+		} else {
+			throw new Exception("Login Failed!");
 		}
 	}
 
@@ -97,6 +97,57 @@ public class UserResource {
 		String userID = (String) auth.getPrincipal();
 		logger.info("View user Details!" + userID);
 		return facade.getUser(userID);
+	}
+
+	@ApiOperation(value = "User Logout", nickname = "User Logout")
+	@RequestMapping(value = "/secure/logout", method = RequestMethod.GET)
+	ResponseEntity<?> logout() {
+		// TODO
+		// service to clear any kind of user cache
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userID = (String) auth.getPrincipal();
+		logger.info("Logout user " + userID);
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Trigger Email with Validation Link", nickname = "Trigger Email For Validation")
+	@RequestMapping(value = "/secure/email/trigger", method = RequestMethod.GET)
+	ResponseEntity<?> triggerEmailForValidation() {
+		// TODO
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userID = (String) auth.getPrincipal();
+		logger.info("Trigger Email for user " + userID);
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Send Mobile SMS with Validation OTP", nickname = "Send Mobile SMS with Validation OTP")
+	@RequestMapping(value = "/secure/sms/trigger", method = RequestMethod.GET)
+	ResponseEntity<?> triggerMobileSmsForValidation() {
+		// TODO
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userID = (String) auth.getPrincipal();
+		logger.info("Trigger sms for user " + userID);
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Validate OTP send over SMS", nickname = "Validate OTP send over SMS")
+	@RequestMapping(value = "/secure/sms/validate", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> validateSmsOTP() {
+		// TODO
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userID = (String) auth.getPrincipal();
+		logger.info("Validate sms for user " + userID);
+		return new ResponseEntity<>("success", HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Validate User Email", nickname = "Validate User Email")
+	@RequestMapping(value = "/email/validate", method = RequestMethod.POST, consumes = "application/json")
+	ResponseEntity<?> validateEmail() {
+		// TODO
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userID = (String) auth.getPrincipal();
+		logger.info("Validate sms for user " + userID);
+		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Get User Token", nickname = "Get User Token")
