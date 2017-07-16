@@ -16,6 +16,7 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import {CartComponent} from './cart/cart.component';
 import {CartService} from './services/cartService';
 import {UserComponent} from './user/user.component';
+import {BasicRegistrationComponent} from './basic-registration/basic-registration.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {UserComponent} from './user/user.component';
     ProductsComponent,
     ProductDetailsComponent,
     CartComponent,
-    UserComponent
+    UserComponent,
+    BasicRegistrationComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -37,7 +39,7 @@ import {UserComponent} from './user/user.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  entryComponents: [ProductDetailsComponent, UserComponent],
+  entryComponents: [ProductDetailsComponent, UserComponent, BasicRegistrationComponent],
   providers: [CartService],
   bootstrap: [AppComponent]
 })

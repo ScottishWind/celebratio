@@ -28,7 +28,7 @@
   position: relative;
   left: 0;
   padding-top: 0%;
-  position: fixed;
+  position: relative;
   max-height: 20%;
   z-index: 10;
 }
