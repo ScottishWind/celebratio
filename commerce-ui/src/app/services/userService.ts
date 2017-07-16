@@ -25,6 +25,19 @@ export class UserService {
       .then(res => "success")
       .catch(e => this.handleError(e));
   }
+  
+    loginUser(form: any) {
+    let user = new User(null, form.email, form.password, "native");
+    let headers = new Headers();
+    headers.append("Content-type", 'application/json');
+    headers.append("accept", 'application/json');
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(Constants._serviceUrl + '/user/login', JSON.stringify(user), options)
+      .toPromise()
+      .then(res => "success")
+      .catch(e => this.handleError(e));
+  }
+  
 
   private handleError(error: Response | any) {
     let errMsg: string;

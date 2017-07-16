@@ -32,9 +32,11 @@ export class BasicRegistrationComponent {
     res.then(function (value) {
       if (value == "success") {
         console.log("Registration Successful");
+        return "succes";
       }
       else {
         console.log("Registration Failed");
+        return "failed";
       }
     });
   }
