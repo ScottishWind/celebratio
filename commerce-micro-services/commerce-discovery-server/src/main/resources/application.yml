@@ -1,0 +1,7 @@
+eureka:
+  server:
+    enableSelfPreservation: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+      

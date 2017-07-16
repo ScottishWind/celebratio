@@ -18,6 +18,7 @@
 		<module>product-service</module>
 		<module>user-service</module>
 		<module>cart-service</module>
+		<module>commerce-discovery-server</module>
 	</modules>
 
 <dependencyManagement>
@@ -29,13 +30,14 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>Camden.SR4</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
     </dependencies>
   </dependencyManagement>
 

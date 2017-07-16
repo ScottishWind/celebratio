@@ -11,9 +11,9 @@
 	<description>services for product module</description>
 
 	<parent>
-	<groupId>com.commerce.online</groupId>
-	<artifactId>xcommerce-application</artifactId>
-	<version>1.0.0</version>
+		<groupId>com.commerce.online</groupId>
+		<artifactId>xcommerce-application</artifactId>
+		<version>1.0.0</version>
 	</parent>
 
 	<properties>
@@ -21,16 +21,20 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-	
+
 	<dependencies>
-	 	<dependency>
-      		<groupId>com.commerce.online</groupId>
-      		<artifactId>commerce-model</artifactId>
-      		<version>1.0.0</version>
-    		</dependency>
+		<dependency>
+			<groupId>com.commerce.online</groupId>
+			<artifactId>commerce-model</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 	</dependencies>
 
-<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

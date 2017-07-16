@@ -10,9 +10,9 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @SpringBootApplication
 @RefreshScope
 @EnableAutoConfiguration(exclude = { org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class })
-public class CommerceServiceApplication {
+public class CommerceCartServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommerceServiceApplication.class, args);
+		SpringApplication.run(CommerceCartServiceApplication.class, args);
 	}
 }

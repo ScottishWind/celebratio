@@ -1,16 +1,16 @@
-package com.xcommerce.online;
+package com.commerce.online.commercediscoveryserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+@EnableEurekaServer
 @SpringBootApplication
-@RefreshScope
 @EnableAutoConfiguration(exclude = { org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class })
-public class CommerceServiceApplication {
+public class CommerceDiscoveryServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommerceServiceApplication.class, args);
+		SpringApplication.run(CommerceDiscoveryServerApplication.class, args);
 	}
 }

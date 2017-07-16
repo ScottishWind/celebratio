@@ -87,4 +87,10 @@ public class ProductResource {
 		productFacade.deleteAll();
 		return (new ResponseEntity<>("success", HttpStatus.OK));
 	}
+	
+	@ApiOperation(value = "Testing Client-Server call with Eureka", nickname = "Testing Client-Server call with Eurekan")
+	@RequestMapping(value = "/eureka/server", method = RequestMethod.GET)
+    public String hello() {
+        return "Successful test of Eureka client-server call with REST Template !";
+    }
 }

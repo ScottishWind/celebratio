@@ -12,7 +12,7 @@ public class AESKeyGenerator {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	/**public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		AESUtility aes = new AESUtilityImpl();
 		try {
@@ -24,6 +24,6 @@ public class AESKeyGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}**/
 
 }

@@ -10,11 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.xcommerce.online.user.facade.UserFacade;
 import com.xcommerce.online.user.model.User;
@@ -155,6 +157,19 @@ public class UserResource {
 	ResponseEntity<?> getToken(@PathVariable("userID") String userID) {
 		logger.info("Get Token for user " + userID);
 		return new ResponseEntity<>(facade.getToken(userID), HttpStatus.OK);
+	}
+	
+	/**
+	 * This part is to test the client to sever service call using Eureka
+	 */
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@ApiOperation(value = "Testing Client-Server call with Eureka", nickname = "Testing Client-Server call with Eurekan")
+	@RequestMapping(value = "/eureka/client", method = RequestMethod.GET)
+	public String hello() {
+		String url = "http://product-service/product/eureka/server";
+		return restTemplate.getForObject(url, String.class);
 	}
 
 }
