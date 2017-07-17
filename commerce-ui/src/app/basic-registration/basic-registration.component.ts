@@ -14,7 +14,7 @@ export class BasicRegistrationComponent {
   complexForm: FormGroup;
   imageLocation = "";
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {
+  constructor(private activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {
     this.complexForm = fb.group({
       'profilePic': [null, null],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
@@ -28,16 +28,15 @@ export class BasicRegistrationComponent {
 
   submitForm(user: any) {
     console.log("Registering ", user);
+    let me = this;
     let res = this.userService.registerUser(user);
     res.then(function (value) {
       if (value == "success") {
         console.log("Registration Successful");
-        return "succes";
+        me.activeModal.close('Close click');
+        return true;
       }
-      else {
-        console.log("Registration Failed");
-        return "failed";
-      }
+      return false;
     });
   }
 }

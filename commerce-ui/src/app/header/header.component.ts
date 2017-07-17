@@ -3,6 +3,7 @@ import {CartComponent} from '../cart/cart.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BasicRegistrationComponent} from '../basic-registration/basic-registration.component'
 import {LoginComponent} from '../login/login.component'
+import {UserComponent} from '../user/user.component'
 
 @Component({
   selector: 'app-headercomponent',
@@ -24,5 +25,9 @@ export class HeaderComponent implements OnInit {
 
   openLogin() {
     this.modalService.open(LoginComponent);
+  }
+
+  openUserProfile() {
+    this.modalService.open(UserComponent);
   }
 }

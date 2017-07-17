@@ -19,6 +19,7 @@ import {UserComponent} from './user/user.component';
 import {BasicRegistrationComponent} from './basic-registration/basic-registration.component';
 import {LoginComponent} from './login/login.component';
 
+
 @NgModule({
   declarations: [
     MapToIterable,
@@ -32,6 +33,7 @@ import {LoginComponent} from './login/login.component';
     UserComponent,
     BasicRegistrationComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,5 +1,5 @@
-import {Injectable}              from '@angular/core';
-import {Http, Response, RequestOptions, Headers}          from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -25,8 +25,8 @@ export class UserService {
       .then(res => "success")
       .catch(e => this.handleError(e));
   }
-  
-    loginUser(form: any) {
+
+  loginUser(form: any) {
     let user = new User(null, form.email, form.password, "native");
     let headers = new Headers();
     headers.append("Content-type", 'application/json');
@@ -38,6 +38,8 @@ export class UserService {
       .catch(e => this.handleError(e));
   }
   
+  
+
 
   private handleError(error: Response | any) {
     let errMsg: string;
