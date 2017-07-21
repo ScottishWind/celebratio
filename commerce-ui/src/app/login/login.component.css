@@ -1,0 +1,34 @@
+.image{
+  align-self: auto;
+  width: 100%;
+}
+
+.carousel{
+  position: absolute;
+  margin-bottom: 20px;
+  line-height:1;
+  top:0;
+  left:0;
+  min-width:100%;
+}
+
+.carousel .item {
+  width: 100%;
+  /*slider width*/
+  max-height: 20%;
+  /*slider height*/
+}
+.carousel .item img {
+  width: 100%;
+  /*image width*/
+}
+
+.banner {
+  width: 100%;
+  position: relative;
+  left: 0;
+  padding-top: 0%;
+  position: relative;
+  max-height: 20%;
+  z-index: 10;
+}

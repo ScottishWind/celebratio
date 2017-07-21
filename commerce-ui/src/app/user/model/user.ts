@@ -17,4 +17,8 @@ export class User {
     this.password = password;
     this.UserType = UserType;
   }
+  
+   getUser(){
+    return this.email;
+  }
 }

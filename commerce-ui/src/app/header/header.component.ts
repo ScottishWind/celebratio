@@ -30,4 +30,5 @@ export class HeaderComponent implements OnInit {
   openUserProfile() {
     this.modalService.open(UserComponent);
   }
+  
 }
