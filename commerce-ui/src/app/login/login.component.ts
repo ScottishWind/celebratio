@@ -7,7 +7,6 @@ import {UserService} from '../services/userService';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService]
 })
 export class LoginComponent {
 
@@ -19,23 +18,18 @@ export class LoginComponent {
       'profilePic': [null, null],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(5)])]
-    }, {
-    });
+    }, {});
   }
 
 
   submitForm(user: any) {
     console.log("User Logging ", user);
     let me = this;
-    let res = this.userService.registerUser(user);
+    let res = this.userService.loginUser(user);
     res.then(function (value) {
-      if (value == "success") {
-        console.log("Login Successful");
-        me.activeModal.close('Close click');
-      }
-      else {
-        console.log("Login Failed");
-      }
+      console.log("Login Successful");
+      me.activeModal.close('Close click');
+      me.userService.userChange.next(value);
     });
   }
 }

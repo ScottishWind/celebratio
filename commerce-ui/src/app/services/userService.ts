@@ -7,11 +7,19 @@ import 'rxjs/add/operator/toPromise';
 import {Constants} from '../shared/constants';
 import {User} from '../user/model/user';
 import {Address} from '../user/model/address';
+import {Subject} from 'rxjs/Subject';
 
 
 @Injectable()
 export class UserService {
+  user: User;
+  userChange: Subject<User> = new Subject<User>();
+
   constructor(private http: Http) {
+    this.userChange.subscribe(value => {
+      this.user = value;
+      console.log(this.user);
+    })
   }
 
   registerUser(form: any) {
@@ -26,7 +34,7 @@ export class UserService {
       .catch(e => this.handleError(e));
   }
 
-  loginUser(form: any) {
+  loginUser(form: any): Promise<any> {
     let user = new User(null, form.email, form.password, "native");
     let headers = new Headers();
     headers.append("Content-type", 'application/json');
@@ -34,11 +42,9 @@ export class UserService {
     let options = new RequestOptions({headers: headers});
     return this.http.post(Constants._serviceUrl + '/user/login', JSON.stringify(user), options)
       .toPromise()
-      .then(res => "success")
+      .then(res => res.json())
       .catch(e => this.handleError(e));
   }
-  
-  
 
 
   private handleError(error: Response | any) {
