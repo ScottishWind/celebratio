@@ -15,7 +15,7 @@ public class SecurityConfig  {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new AuthenticationFilter());
 // In case you want the filter to apply to specific URL patterns only
-        registration.addUrlPatterns("/user/secure/*");
+        registration.addUrlPatterns("/secure/*");
         return registration;
     }
 

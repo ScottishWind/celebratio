@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.xcommerce.online.user.facade.UserFacade;
 import com.xcommerce.online.user.model.User;
 
@@ -25,7 +27,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/user")
+//@RequestMapping(value = "/user")
 @CrossOrigin
 public class UserResource {
 
@@ -165,11 +167,16 @@ public class UserResource {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	@HystrixCommand(fallbackMethod = "fallback")
 	@ApiOperation(value = "Testing Client-Server call with Eureka", nickname = "Testing Client-Server call with Eurekan")
 	@RequestMapping(value = "/eureka/client", method = RequestMethod.GET)
 	public String hello() {
-		String url = "http://product-service/product/eureka/server";
+		String url = "http://product-service/eureka/server";
 		return restTemplate.getForObject(url, String.class);
+	}
+
+	public String fallback() {
+		return "Hello this response is from the fallback method ! ";
 	}
 
 }

@@ -20,7 +20,7 @@ import com.xcommerce.online.product.model.NewProductBean;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/product")
+//@RequestMapping(value = "/product")
 @CrossOrigin
 public class ProductResource {
 

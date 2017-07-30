@@ -19,7 +19,7 @@ import com.xcommerce.online.product.model.NewProductBean;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/cart")
+//@RequestMapping(value = "/cart")
 @CrossOrigin
 public class CartResource {
 	private final Logger logger = LoggerFactory.getLogger(CartResource.class);

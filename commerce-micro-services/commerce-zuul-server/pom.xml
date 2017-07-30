@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>user-service</artifactId>
+	<groupId>com.commerce.online</groupId>
+	<artifactId>commerce-zuul-server</artifactId>
 	<packaging>jar</packaging>
 
-	<name>user-service</name>
-	<description>services for the user module</description>
+	<name>commerce-zuul-server</name>
+	<description>Zuul Proxy server</description>
 
 	<parent>
 		<groupId>com.commerce.online</groupId>
 		<artifactId>xcommerce-application</artifactId>
 		<version>1.0.0</version>
 	</parent>
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,10 +29,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix</artifactId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
 		</dependency>
+
+
 	</dependencies>
 
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -40,7 +43,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<resources>
+                <resources>
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>

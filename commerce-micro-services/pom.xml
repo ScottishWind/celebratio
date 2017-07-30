@@ -19,6 +19,7 @@
 		<module>user-service</module>
 		<module>cart-service</module>
 		<module>commerce-discovery-server</module>
+                <module>commerce-zuul-server</module>
 	</modules>
 
 <dependencyManagement>
