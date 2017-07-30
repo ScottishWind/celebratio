@@ -1,0 +1,7 @@
+---
+applications:
+- name: user-service
+  memory: 768M
+  instances: 1
+  random-route: true
+  path: target/user-service-1.0.0.jar

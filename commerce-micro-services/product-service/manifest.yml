@@ -1,0 +1,7 @@
+---
+applications:
+- name: product-service
+  memory: 384M
+  instances: 1
+  random-route: true
+  path: target/product-service-1.0.0.jar

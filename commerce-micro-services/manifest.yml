@@ -1,0 +1,22 @@
+---
+applications:
+- name: commerce-discovery-server
+  memory: 384M
+  instances: 1
+  random-route: true
+  path: commerce-discovery-server/target/commerce-discovery-server-1.0.0.jar
+- name: product-service
+  memory: 384M
+  instances: 1
+  random-route: true
+  path: product-service/target/product-service-1.0.0.jar
+- name: user-service
+  memory: 768M
+  instances: 1
+  random-route: true
+  path: user-service/target/user-service-1.0.0.jar
+- name: commerce-zuul-server
+  memory: 384M
+  instances: 1
+  random-route: true
+  path: commerce-zuul-server/target/commerce-zuul-server-1.0.0.jar

@@ -1,0 +1,7 @@
+---
+applications:
+- name: commerce-zuul-server
+  memory: 384M
+  instances: 1
+  random-route: true
+  path: target/commerce-zuul-server-1.0.0.jar
