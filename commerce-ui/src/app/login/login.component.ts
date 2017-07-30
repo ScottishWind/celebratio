@@ -4,39 +4,32 @@ import {AbstractControl, FormGroup, FormBuilder, Validators} from '@angular/form
 import {UserService} from '../services/userService';
 
 @Component({
-  selector: 'app-basic-registration',
-  templateUrl: './basic-registration.component.html',
-  styleUrls: ['./basic-registration.component.css'],
-  providers: [UserService]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
-export class BasicRegistrationComponent {
+export class LoginComponent {
 
   complexForm: FormGroup;
   imageLocation = "";
 
-  constructor(private activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {
     this.complexForm = fb.group({
       'profilePic': [null, null],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
-      'password': [null, Validators.compose([Validators.required, Validators.minLength(5)])],
-      'rePassword': [null, Validators.compose([Validators.required])]
-    }, {
-      validator: PasswordValidation.matchPassword
-    });
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(5)])]
+    }, {});
   }
 
 
   submitForm(user: any) {
-    console.log("Registering ", user);
+    console.log("User Logging ", user);
     let me = this;
-    let res = this.userService.registerUser(user);
+    let res = this.userService.loginUser(user);
     res.then(function (value) {
-      if (value == "success") {
-        console.log("Registration Successful");
-        me.activeModal.close('Close click');
-        return true;
-      }
-      return false;
+      console.log("Login Successful");
+      me.activeModal.close('Close click');
+      me.userService.userChange.next(value);
     });
   }
 }
