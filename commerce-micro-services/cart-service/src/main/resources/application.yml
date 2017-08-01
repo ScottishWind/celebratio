@@ -1,3 +1,18 @@
+spring:
+    application:
+        name: cart-service
+        
+server:
+    port: 9030
+    
+security:
+    basic:
+        enabled: false
+
+management:
+    security:
+        enabled: false
+
 eureka:
   client:
     registerWithEureka: true
@@ -6,3 +21,17 @@ eureka:
       defaultZone: http://localhost:9000/eureka/
   instance:
     hostname: localhost
+
+
+---
+spring:
+    profiles: cloud
+    
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://commerce-discovery-server-clouded-milo.cfapps.io/eureka/
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
