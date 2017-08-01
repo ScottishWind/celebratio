@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	  <modelVersion>4.0.0</modelVersion>
-	  <groupId>com.commerce.online</groupId>
-	  <artifactId>xcommerce-application</artifactId>
-	  <version>1.0.0</version>
-	  <packaging>pom</packaging>
-<parent>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-parent</artifactId>
-	<version>1.5.2.RELEASE</version>
-	<relativePath />
-</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.commerce.online</groupId>
+	<artifactId>xcommerce-application</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<swagger.version>2.4.0</swagger.version>
+		<spring.connector.version>1.2.3.RELEASE</spring.connector.version>
+		<spring.cloud.dependencies>Dalston.SR2</spring.cloud.dependencies>
+		<pivotal.cloud.dependencies>1.4.1.RELEASE</pivotal.cloud.dependencies>
+	</properties>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.6.RELEASE</version>
+	</parent>
 
 	<modules>
 		<module>commerce-model</module>
@@ -19,34 +30,34 @@
 		<module>user-service</module>
 		<module>cart-service</module>
 		<module>commerce-discovery-server</module>
+		<module>commerce-config-server</module>
                 <module>commerce-zuul-server</module>
 	</modules>
 
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.pivotal.spring.cloud</groupId>
-            <artifactId>spring-cloud-services-dependencies</artifactId>
-            <version>1.4.1.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+	<dependencyManagement>
+    		<dependencies>
+        		<dependency>
+            			<groupId>io.pivotal.spring.cloud</groupId>
+            			<artifactId>spring-cloud-services-dependencies</artifactId>
+            			<version>${pivotal.cloud.dependencies}</version>
+            			<type>pom</type>
+            			<scope>import</scope>
+        		</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Dalston.SR1</version>
+				<version>${spring.cloud.dependencies}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
-    </dependencies>
-  </dependencyManagement>
+    		</dependencies>
+  	</dependencyManagement>
 
 	<dependencies>
-	 <dependency>
-      <groupId>io.pivotal.spring.cloud</groupId>
-      <artifactId>spring-cloud-services-starter-config-client</artifactId>
-    </dependency>
+		<dependency>
+      			<groupId>io.pivotal.spring.cloud</groupId>
+      			<artifactId>spring-cloud-services-starter-config-client</artifactId>
+    		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -55,40 +66,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+			<version>${spring.connector.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-spring-service-connector</artifactId>
-			<version>1.2.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-			<version>1.2.3.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
 	</dependencies>
 	
-	
-
-
 </project>

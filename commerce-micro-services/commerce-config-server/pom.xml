@@ -3,14 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-
-	<artifactId>commerce-discovery-server</artifactId>
-
+	
+	<artifactId>commerce-config-server</artifactId>
+	
 	<packaging>jar</packaging>
 
-	<name>commerce-discovery-server</name>
-	<description>commerce eureka discovery server</description>
+	<name>commerce-config-server</name>
+	<description>commerce configuration server</description>
 
+	
 	<parent>
 		<groupId>com.commerce.online</groupId>
 		<artifactId>xcommerce-application</artifactId>
@@ -20,12 +21,10 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
-
 	</dependencies>
 
-	
 	<build>
 		<plugins>
 			<plugin>
@@ -41,6 +40,7 @@
 				</includes>
 			</resource>
 		</resources>
+		
 	</build>
 
 
