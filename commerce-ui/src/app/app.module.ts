@@ -5,7 +5,8 @@ import {HttpModule} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MapToIterable} from './shared/mapsToIterable';
 import {SplitArray} from './shared/splitArray';
-import {ImageUploadModule} from "angular2-image-upload"
+import {ImageUploadModule} from "angular2-image-upload";
+import {RouterModule, Routes} from '@angular/router';
 
 
 import {HeaderComponent} from './header/header.component';
@@ -19,6 +20,13 @@ import {UserService} from './services/userService';
 import {UserComponent} from './user/user.component';
 import {BasicRegistrationComponent} from './basic-registration/basic-registration.component';
 import {LoginComponent} from './login/login.component';
+import {OrderComponent} from './order/order.component';
+
+const appRoutes: Routes = [
+  {path: 'home', component: ProductsComponent, data: {itemPerTemplate: 5}},
+  {path: 'order', component: OrderComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
+];
 
 
 @NgModule({
@@ -35,6 +43,7 @@ import {LoginComponent} from './login/login.component';
     BasicRegistrationComponent,
     LoginComponent,
     UserComponent,
+    OrderComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -42,7 +51,8 @@ import {LoginComponent} from './login/login.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [ProductDetailsComponent, UserComponent, BasicRegistrationComponent, LoginComponent],
   providers: [CartService, UserService],

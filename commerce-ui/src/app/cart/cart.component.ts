@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Product} from '../products/model/product';
 import {Subscription} from 'rxjs/Subscription';
 import {CartService} from '../services/cartService';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent {
   productList: Product[] = new Array<Product>();
   subscription: Subscription;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router) {
     this.cartService.getProductList().subscribe(productList => {
       this.productList = productList;
     });

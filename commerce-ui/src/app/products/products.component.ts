@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
 
 
   constructor(private productService: ProductService, private modalService: NgbModal, private cartService: CartService) {
-
+     this.itemPerTemplate = 5;
   }
 
   ngOnInit() {
