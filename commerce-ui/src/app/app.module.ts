@@ -21,6 +21,7 @@ import {UserComponent} from './user/user.component';
 import {BasicRegistrationComponent} from './basic-registration/basic-registration.component';
 import {LoginComponent} from './login/login.component';
 import {OrderComponent} from './order/order.component';
+import { NavigatorComponent } from './navigator/navigator.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: ProductsComponent, data: {itemPerTemplate: 5}},
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     LoginComponent,
     UserComponent,
     OrderComponent,
+    NavigatorComponent,
   ],
   imports: [
     NgbModule.forRoot(),
