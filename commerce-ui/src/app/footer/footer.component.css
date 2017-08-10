@@ -1,22 +1,23 @@
 body {
   margin:0; /*gets rid of white space around body*/
   height:200vh;
-  position:relative; /*REQUIRED Sets up positioning for your footer*/
+  width:100%;
+  position:fixed; /*REQUIRED Sets up positioning for your footer*/
 }
 
 .footer-social { float: left; margin-top:5px;}
 .footer-social li { display: inline;}
-.footer-social span { margin-top: -20px;}
+.footer-social span { margin-top: -20px;} 
 
 #sticky {
-  width:100%;
+  width:200%;
   padding:20px;
   padding-bottom:4px;
   background:black;
   color:white;
   font-weight:bold;
   font-size:14px;
-  position:fixed;    /*Here's what sticks it*/
+  position:relative;    /*Here's what sticks it*/
   bottom:0;          /*to the bottom of the body*/
   left:0;            /*and to the left of the body.*/
   
