@@ -4,6 +4,10 @@ body {
   position:relative; /*REQUIRED Sets up positioning for your footer*/
 }
 
+.footer-social { float: left; margin-top:5px;}
+.footer-social li { display: inline;}
+.footer-social span { margin-top: -20px;}
+
 #sticky {
   width:100%;
   padding:20px;
