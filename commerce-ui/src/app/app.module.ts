@@ -23,6 +23,7 @@ import {LoginComponent} from './login/login.component';
 import {OrderComponent} from './order/order.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { FooterComponent } from './footer/footer.component';
+import { CompanyRefComponent } from './company-ref/company-ref.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: ProductsComponent, data: {itemPerTemplate: 5}},
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     OrderComponent,
     NavigatorComponent,
     FooterComponent,
+    CompanyRefComponent,
   ],
   imports: [
     NgbModule.forRoot(),
