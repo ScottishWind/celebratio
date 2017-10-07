@@ -1,1 +1,291 @@
-<p>add here</p>
+<!-- Login form container -->
+<div class="container login_container">
+    <div class="numberCircle">1</div>
+    <button id="loginForm" class="accordion"
+        (click)="openAccordian('loginPanel','loginForm')">Login or Sign
+        up</button>
+    <div class="panel" id="loginPanel">
+        <div class="omb_login">
+            <h3 class="omb_authTitle">
+                Login or <a href="#">Sign up</a>
+            </h3>
+            <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-facebook"> <i
+                        class="fa fa-facebook visible-xs"></i> <span class="hidden-xs">Facebook</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-twitter"> <i
+                        class="fa fa-twitter visible-xs"></i> <span class="hidden-xs">Twitter</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-google"> <i
+                        class="fa fa-google-plus visible-xs"></i> <span class="hidden-xs">Google+</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row omb_row-sm-offset-3 omb_loginOr">
+                <div class="col-xs-12 col-sm-6">
+                    <hr class="omb_hrOr">
+                    <span class="omb_spanOr">or</span>
+                </div>
+            </div>
+
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-6">
+                    <form class="omb_loginForm" action="" autocomplete="off"
+                        method="POST">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="username"
+                                placeholder="email address">
+                        </div>
+                        <span class="help-block"></span>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password"
+                                placeholder="Password">
+                        </div>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">SIGNUP/LOGIN
+                            WITH EMAIL</button>
+                        <button class="btn btn-lg btn-default btn-block" type="button"
+                            (click)="openAccordian('addressPanel','addressForm')">or
+                            Continue as guest</button>
+                        <br />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- {{address}} -->
+<!-- Address form container -->
+<div class="container address_container">
+    <div class="numberCircle">2</div>
+    <button class="accordion" id="addressForm"
+        (click)="openAccordian('addressPanel','addressForm')">Address
+        Details</button>
+    <div class="panel" id="addressPanel">
+        <div class="omb_login">
+            <div class="modal-body">
+     <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched}">
+      <label>First Name:</label>
+      <input class="form-control" type="text" placeholder="FirstName" [formControl]="complexForm.controls['firstName']">
+      <div *ngIf="complexForm.controls['firstName'].hasError('required') && complexForm.controls['firstName'].touched"
+           class="alert alert-danger">You must include a first name.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['lastName'].valid && complexForm.controls['lastName'].touched}">
+      <label>Last Name:</label>
+      <input class="form-control" type="text" placeholder="LastName" [formControl]="complexForm.controls['lastName']">
+      <div *ngIf="complexForm.controls['lastName'].hasError('required') && complexForm.controls['lastName'].touched"
+           class="alert alert-danger">You must include a last name.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+      <label>Email:</label>
+      <input class="form-control" type="email" placeholder="abc@bn.com" [formControl]="complexForm.controls['email']">
+      <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched"
+           class="alert alert-danger">You must include a Email.
+      </div>
+      <div *ngIf="complexForm.controls['email'].hasError('email') && complexForm.controls['email'].touched"
+           class="alert alert-danger">Your email is invalid
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['phoneNumber'].valid && complexForm.controls['phoneNumber'].touched}">
+      <label>Phone:</label>
+      <input class="form-control" type="number" placeholder="0123456789"
+             [formControl]="complexForm.controls['phoneNumber']">
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+      <label>Password:</label>
+      <input class="form-control" type="password" [formControl]="complexForm.controls['password']">
+      <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched"
+           class="alert alert-danger">You must include a password.
+      </div>
+      <div *ngIf="complexForm.controls['password'].hasError('minlength') && complexForm.controls['password'].touched"
+           class="alert alert-danger">Your password must be at least 5 characters long.
+      </div>
+      <div *ngIf="complexForm.controls['password'].hasError('maxlength') && complexForm.controls['password'].touched"
+           class="alert alert-danger">Your password cannot exceed 10 characters.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Address :</label>
+      <input class="form-control" type="text" placeholder="firstline" [formControl]="complexForm.controls['firstLine']">
+      <input class="form-control" type="text" placeholder="secondline"
+             [formControl]="complexForm.controls['secondLine']">
+      <input class="form-control" type="text" placeholder="thirdline" [formControl]="complexForm.controls['thirdLine']">
+      <input class="form-control" type="text" placeholder="landmark" [formControl]="complexForm.controls['landmark']">
+    </div>
+    <br><br/>
+
+
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['postcode'].valid && complexForm.controls['postcode'].touched}">
+      <label>PostCode:</label>
+      <input class="form-control" type="text" [formControl]="complexForm.controls['postcode']">
+      <div *ngIf="complexForm.controls['postcode'].hasError('required') && complexForm.controls['postcode'].touched"
+           class="alert alert-danger">You must include a Postcode.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['city'].valid && complexForm.controls['city'].touched}">
+      <label>City:</label>
+      <select class="form-control" [formControl]="complexForm.controls['city']">
+        <option *ngFor="let city of cities" [value]="city">
+          {{city}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['city'].hasError('required') && complexForm.controls['city'].touched"
+           class="alert alert-danger">You must include a city.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['state'].valid && complexForm.controls['state'].touched}">
+      <label>State:</label>
+      <select class="form-control" [formControl]="complexForm.controls['state']">
+        <option *ngFor="let state of states" [value]="state">
+          {{state}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['state'].hasError('required') && complexForm.controls['state'].touched"
+           class="alert alert-danger">You must include a State.
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error':!complexForm.controls['country'].valid && complexForm.controls['country'].touched}">
+      <label>Country:</label>
+      <select class="form-control" [formControl]="complexForm.controls['country']">
+        <option *ngFor="let country of countries" [value]="country">
+          {{country}}
+        </option>
+      </select>
+      <div *ngIf="complexForm.controls['country'].hasError('required') && complexForm.controls['country'].touched"
+           class="alert alert-danger">You must include a Country.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit
+      </button>
+      <br/>
+    </div>
+</form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- order form summary -->
+<div class="container  order_summary_container">
+    <div class="numberCircle">3</div>
+    <button class="accordion" id="orderSummary"
+        (click)="openAccordian('orderPanel','orderSummary')">Order
+        Summary</button>
+    <div class="panel" id="orderPanel">
+        <div class="omb_login">
+            <h3 class="omb_authTitle">
+                Order Summary<a href="#"></a>
+            </h3>
+            <div class="modal-header">
+                <font color="grey">Please confirm your order details and
+                    proceed to payment</font>
+            </div>
+            <div class="modal-body">
+                <div class="row col-sm-12">
+
+                    <div class="row col-sm-10">
+                        <div class="col-sm-6">
+                            <small><b>ITEM</b></small>
+                        </div>
+                        <div class="col-sm-2">
+                            <small><b>PRICE</b></small>
+                        </div>
+                        <div class="col-sm-2">
+                            <small><b>SUB-TOTAL</b></small>
+                        </div>
+                    </div>
+                    <div class="row col-sm-2">
+                        <div>
+                            <small><b>ADDRESS</b></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-item" >
+                    <div class="row col-sm-12">
+                        <div class="row list col-sm-10" *ngFor="let product of productList">
+                            <div class="col-sm-3">
+                                <img class="img-fluid" src="{{product.images}}" />
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="orderspan"> <small>{{product.name}}</small></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <small>Rs:{{product.price}}</small>
+
+                            </div>
+                            <div class="col-sm-2" class="subTotal">
+                                <small>Rs:{{product.price}}</small>
+                            </div>
+                        </div>
+
+                        <div class="row col-sm-2">
+                            <div>
+                                <small><b></b></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="row" style="padding-bottom: 4px;">
+                        <div class="col-lg-6">HAVE A COUPON CODE?</div>
+                    </div>
+                    <div class="row col-lg-12">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter Code">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Apply</button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <div class="input-group col-lg-6">
+                                <small>TOTAL PRICE:Rs:0</small>
+                            </div>
+                            <!-- /input-group -->
+                            <div class="input-group col-lg-6">
+                                <small>DISCOUNT:0</small>
+
+                            </div>
+                            <div class="input-group col-lg-6">
+                                <small>AMOUNT PAYABLE:Rs:</small>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
